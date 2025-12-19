@@ -21,8 +21,8 @@ nav {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;           /* menu ngang */
-    justify-content: flex-start; /* căn trái thay vì căn giữa */
+    display: flex;               /* menu ngang */
+    justify-content: flex-start; /* căn trái */
 }
 
 .menu > li {
@@ -68,13 +68,26 @@ nav {
 .menuparent:hover .submenu {
     display: block;
 }
+
 .menu a {
     text-decoration: none;   /* bỏ gạch chân */
     color: inherit;          /* lấy màu từ thẻ li */
     display: block;          /* để hover full dòng */
 }
 
-/* Khi hover vẫn không hiện gạch chân */
 .menu a:hover {
     text-decoration: none;
+}
+
+/* ==========================
+   MAIN CONTENT
+   ========================== */
+#mainContent {
+    padding: 20px;
+    background-color: #ffffff;
+    /* min-height: 1000px;       chiều cao tối thiểu để khung không quá nhỏ */
+    border: 1px solid #dcdcdc;
+    margin: 20px;            /* cách menu một khoảng */
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }

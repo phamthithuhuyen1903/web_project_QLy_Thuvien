@@ -204,7 +204,8 @@ tbody tr:hover {
     margin-bottom: 12px;
     padding: 10px 14px;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 20px;
+    font-style: bold;
     display: none;
 }
 
@@ -213,7 +214,7 @@ tbody tr:hover {
 }
 
 .form-error {
-    color: #721c24;
+    color: #eb273a;
 }
 
 /* FORM INPUT */
@@ -331,4 +332,39 @@ tbody tr:hover {
 
 #noDelete:hover {
     background: #0773c7;
+}
+/* Hộp thoại thông báo */
+.popup-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border: 2px solid #333; /* viền luôn màu đen */
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    text-align: center;
+    display: none;
+}
+
+/* Chỉ đổi màu chữ, không đổi viền */
+.popup-message.success {
+    color: green;
+}
+
+.popup-message.error {
+    color: red;
+}
+
+/* Nút màu xanh */
+.popup-message button {
+    margin-top: 10px;
+    padding: 6px 10px;
+    border: none;
+    background: #05038a; /* xanh đậm */
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
 }

@@ -1,9 +1,7 @@
 <?php
 include 'connect.php';
 
-/* ==========================
-   THÊM LOẠI SÁCH
-   ========================== */
+/* THÊM LOẠI SÁCH */
 if (isset($_POST['action']) && $_POST['action'] == "add") {
 
     $ma = trim($_POST['ma']);
@@ -24,35 +22,37 @@ if (isset($_POST['action']) && $_POST['action'] == "add") {
     echo "success";
     exit;
 }
-
-/* ==========================
-   XÓA LOẠI SÁCH
-   ========================== */
-if (isset($_POST['action']) && $_POST['action'] == "delete") {
-
-    $ma = $_POST['ma'];
-
-    mysqli_query($conn, "DELETE FROM loai_sach WHERE ma_loai_sach = '$ma'");
-    echo "success";
-    exit;
-}
-
-/* ==========================
-   SỬA LOẠI SÁCH
-   ========================== */
+/* SỬA LOẠI SÁCH */
 if (isset($_POST['action']) && $_POST['action'] == "update") {
 
     $ma = $_POST['ma'];
     $ten = $_POST['ten'];
-
-    mysqli_query($conn, "UPDATE loai_sach SET ten_loai_sach = '$ten' WHERE ma_loai_sach = '$ma'");
+    $sql = "UPDATE loai_sach 
+            SET ten_loai_sach = '$ten' 
+            WHERE ma_loai_sach = '$ma'";
+    mysqli_query($conn, $sql);
     echo "success";
     exit;
 }
 
-/* ==========================
-   TÌM KIẾM THEO TÊN
-   ========================== */
+/* XOÁ LOẠI SÁCH */
+if (isset($_POST['action']) && $_POST['action'] == "delete") {
+    $ma = mysqli_real_escape_string($conn, $_POST['ma']);
+
+    $sql = "DELETE FROM loai_sach WHERE ma_loai_sach = '$ma'";
+    if (mysqli_query($conn, $sql)) {
+        echo "success";
+    } else {
+        // Nếu không xóa được (ví dụ do ràng buộc khóa ngoại), trả về lỗi
+        echo "error";
+    }
+    exit;
+}
+
+
+
+
+/* TÌM KIẾM THEO TÊN */
 if (isset($_GET['action']) && $_GET['action'] == "search") {
 
     $keyword = mysqli_real_escape_string($conn, $_GET['keyword']);
@@ -84,11 +84,8 @@ if (isset($_GET['action']) && $_GET['action'] == "search") {
     exit;
 }
 
-/* ==========================
-   LOAD BẢNG
-   ========================== */
+/* LOAD TABLE */
 if (isset($_GET['action']) && $_GET['action'] == "load") {
-
     $sql = "SELECT * FROM loai_sach";
     $result = mysqli_query($conn, $sql);
 
@@ -113,6 +110,7 @@ if (isset($_GET['action']) && $_GET['action'] == "load") {
     }
     exit;
 }
+mysqli_close($conn);
 ?>
 
 <html>
@@ -144,7 +142,9 @@ if (isset($_GET['action']) && $_GET['action'] == "load") {
                 <th>Thao tác</th>
             </tr>
         </thead>
-        <tbody id="tabletheloai"></tbody>
+        <tbody id="tabletheloai">
+
+        </tbody>
     </table>
 
     <!-- FORM THÊM -->
@@ -200,7 +200,7 @@ if (isset($_GET['action']) && $_GET['action'] == "load") {
                 </div>
 
                 <div class="modal-actions">
-                    <button class="btn-save" id="btnUpdate">Cập nhật</button>
+                    <button class="btn-save" id="btnUpdate">Lưu</button>
                     <button class="btn-cancel" id="btnCloseEdit">Hủy</button>
                 </div>
             </div>
@@ -208,6 +208,22 @@ if (isset($_GET['action']) && $_GET['action'] == "load") {
         </div>
     </div>
 
+    <!-- FORM XÓA -->
+    <div class="confirm-box" id="deleteConfirmBox" style="display:none;">
+        <div class="confirm-content">
+            <p>Bạn có chắc chắn muốn xóa không?</p>
+            <div class="confirm-actions">
+                <button id="yesDelete">Yes</button>
+                <button id="noDelete">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- hộp thoại thông báo -->
+    <div id="popupMessage" class="popup-message">
+        <p id="popupText"></p>
+        <button id="popupClose">Đóng</button>
+    </div>
 
     <script src="../js/theloai.js"></script>
 
