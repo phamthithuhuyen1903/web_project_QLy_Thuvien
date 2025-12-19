@@ -15,6 +15,8 @@ $sql = "SELECT
     JOIN sinh_vien sv ON pm.ma_sv = sv.ma_sv
     JOIN sach s ON pm.ma_sach = s.ma_sach";
 
+$tinhtrang = $_GET['btn_tinhtrang'] ?? null;
+
 if (!empty($tinhtrang)) {
     $sql .= " WHERE pm.tinh_trang = ?";
     $stmt = mysqli_prepare($conn, $sql);

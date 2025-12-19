@@ -3,7 +3,7 @@
         <li class="menu_thaxuong">
             <button class="btn_thaxuong">Quản lý mượn trả sách</button>
             <ul class="content_menuthaxuong">
-                <li><a href="/Project_QuanLyThuVien/admin_qlmuontra/admin_giaodien.php">Quản lý phiếu mượn</li>
+                <li><a href="/Project_QuanLyThuVien/admin_qlmuontra/admin_giaodien.php">Quản lý phiếu mượn</a></li>
                 <li>Xem lịch sử hình phạt</li>
 
             </ul>

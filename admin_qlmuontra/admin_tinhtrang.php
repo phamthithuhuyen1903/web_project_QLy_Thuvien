@@ -34,7 +34,7 @@
         </button>
     <?php endforeach; ?>
 
-    <button type="submit" name="tinhtrang" value="" class="hop_thong_ke">
+    <button type="submit" name="btn_tinhtrang" value="" class="hop_thong_ke">
         <strong>Hiển thị tất cả</strong>
     </button>
 

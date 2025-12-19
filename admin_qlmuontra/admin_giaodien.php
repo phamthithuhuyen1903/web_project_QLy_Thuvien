@@ -33,13 +33,13 @@
                         <input type="date" id="ngaymuon" name="ngaymuon" value="<?= $_GET['ngaymuon'] ?? '' ?>">
                     </div>
 
-                    <div class="date">
+                    <div class="group_date">
                         <label for="ngaytra">Ngày trả:</label>
                         <input type="date" id="ngaytra" name="ngaytra" value="<?= $_GET['ngaytra'] ?? '' ?>">
                     </div>
 
                     <button type="submit">Tìm kiếm</button>
-                    <a href="add_phieumuontra.php" class="add_button">+ Thêm phiếu mượn</a>
+                    <a href="add_phieumuon.php" class="add_button">+ Thêm phiếu mượn</a>
                 </form>
             </div>
 

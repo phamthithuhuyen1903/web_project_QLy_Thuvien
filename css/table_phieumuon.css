@@ -37,15 +37,35 @@ td, th {
     word-break: break-word; /* Tự ngắt dòng nếu dài */
 }
 
-th:nth-child(2),
-td:nth-child(2) {
+th:nth-child(1),
+td:nth-child(1) {
     width: 80px; /* hoặc 140px tùy bạn */
 }
-
-th:nth-child(5),
-td:nth-child(5) {
-    width: 150px; /* hoặc 140px tùy bạn */
+th:nth-child(2),
+td:nth-child(2) {
+    width: 120px; /* hoặc 140px tùy bạn */
 }
+th:nth-child(3),
+td:nth-child(3) {
+    width: 200px; /* hoặc 140px tùy bạn */
+}
+th:nth-child(4),
+td:nth-child(4) {
+    width: 70px; /* hoặc 140px tùy bạn */
+}
+th:nth-child(6),
+td:nth-child(6) {
+    width: 100px; /* hoặc 140px tùy bạn */
+}
+th:nth-child(7),
+td:nth-child(7) {
+    width: 100px; /* hoặc 140px tùy bạn */
+}
+th:nth-child(8),
+td:nth-child(8) {
+    width: 100px; /* hoặc 140px tùy bạn */
+}
+
 
 tr:hover {
     background-color: #f1f3f5;
