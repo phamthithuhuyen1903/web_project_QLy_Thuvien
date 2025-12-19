@@ -1,0 +1,74 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI';
+        }
+
+        body {
+            height: 100vh;
+            /* background-image: url('https://c.pxhere.com/photos/46/fd/books_book_pages_read_literature_browse_light_paper_pages-669722.jpg!s2'); */
+            background-color: rgba(242, 162, 12, 0.222);
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tieude {
+            text-align: center;
+            color: black;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .login {
+            background: #fff; 
+            padding: 50px;
+            border-radius: 16px; 
+            width: 450px;
+            border: #333 solid 1px;
+        }
+
+        .login h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        
+        .btnlogin {
+            width: 100%;
+            padding: 12px;
+            background-color: #0758af;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btnlogin:hover {
+            background-color: #09407c;
+            transform: scale(1.05); 
+        }
