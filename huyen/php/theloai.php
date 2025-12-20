@@ -131,7 +131,9 @@ mysqli_close($conn);
             <i class="fas fa-search search-icon"></i>
             <input type="text" id="search" placeholder="Tìm kiếm theo tên">
         </div>
-        <button class="add">Thêm mới</button>
+        <button class="add">
+            <i class="fas fa-plus"></i>Thêm mới
+        </button>
     </div>
 
     <table>

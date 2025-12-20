@@ -93,7 +93,9 @@ textarea {
     opacity: 0;
     cursor: pointer;
 }
-
+.hidden {
+    display: none;
+}
 /* nút thêm */
 .btnthem {
     margin-top: auto;

@@ -101,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ?>
                 </select>
             </div>
+
             <div class="form-group">
                 <label>Tình trạng</label>
                 <select name="tinh_trang">
@@ -113,16 +114,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label>Mô tả</label>
                 <textarea name="mo_ta"></textarea>
             </div>
-
-
-
         </div>
 
         <div class="form-right">
-            <button type="button" class="btnupload" onclick="document.getElementById('hinhanh').click();">Upload</button>
-
+            <button type="button" class="btnupload" id="btnUpload">Upload</button>
             <div class="image">
-                <input type="file" id="hinhanh" name="hinhanh" accept="image/*" style="display:none;">
+                <input type="file" id="hinhanh" name="hinhanh" accept="image/*" class="hidden">
                 <div id="preview"></div>
             </div>
 
