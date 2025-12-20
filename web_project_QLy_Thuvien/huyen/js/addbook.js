@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.text())
         .then(data => {
             if (data.includes("success")) {
-                messageBox.textContent = "Thêm sách thành công!";
+                messageBox.textContent = "Thêm thành công!";
                 messageBox.className = "success";
                 messageBox.style.display = "block";
 
@@ -42,7 +42,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 setTimeout(() => {
                     window.location.href = "danhmucsach.php";
                 }, 2000);
-            } else {
+            }else if (data.includes("duplicate")) {
+                messageBox.textContent = "Mã sách đã tồn tại, vui lòng nhập lại!";
+                messageBox.className = "error";
+                messageBox.style.display = "block";
+            }else {
                 messageBox.textContent = "Thêm sách không thành công!";
                 messageBox.className = "error";
                 messageBox.style.display = "block";
@@ -51,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             messageBox.textContent = "Có lỗi xảy ra khi gửi dữ liệu!";
             messageBox.className = "error";
-            messageBox.style.display = "block";
             console.error("Lỗi:", error);
         });
     });

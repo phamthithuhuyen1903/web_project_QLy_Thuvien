@@ -1,0 +1,78 @@
+/* Header */
+header {
+    text-align: center;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Thanh công cụ */
+.button {
+    display: flex;
+    justify-content: space-between; /* tìm kiếm trái, thêm mới phải */
+    align-items: center;
+    margin: 10px 0;
+}
+
+#search {
+    flex: 1;
+    max-width: 300px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add {
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.add:hover {
+    background-color: #45a049;
+}
+/* Bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    /* Thêm thuộc tính này để trình duyệt tự tính toán độ rộng cột dựa trên nội dung */
+    table-layout: auto; 
+}
+
+thead {
+    background-color: #4CAF50;
+    color: white;
+}
+
+thead th {
+    padding: 12px 15px; /* Tăng padding để tiêu đề thoáng hơn */
+    text-align: center;
+    border: 1px solid #ddd;
+    /* Đảm bảo tiêu đề không bị xuống dòng để giữ độ rộng chuẩn */
+    white-space: nowrap; 
+}
+thead th:nth-child(1), 
+tbody td:nth-child(1) {
+    width: 1%;           /* Ép cột thu nhỏ hết mức có thể */
+    white-space: nowrap; /* Đảm bảo chữ "Mã sinh viên" không bị xuống dòng */
+    padding-left: 15px;  /* Giữ khoảng cách lề để không bị dính sát vách */
+    padding-right: 15px;
+}
+thead th:nth-child(3), tbody td:nth-child(3), /* Cột Lớp */
+thead th:nth-child(4), tbody td:nth-child(4)  /* Cột Ngày sinh */ {
+    width: 1%;
+    white-space: nowrap;
+}
+tbody td {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+/* Hiệu ứng xen kẽ và hover giữ nguyên như cũ */
+tbody tr:nth-child(even) { background-color: #f9f9f9; }
+tbody tr:nth-child(odd) { background-color: #ffffff; }
+tbody tr:hover { background-color: #e6f7ff; cursor: pointer; }

@@ -123,7 +123,7 @@ textarea {
 }
 
 #messageBox.success {
-    background: #4CAF50; /* xanh lá */
+    background: #eef5ef; /* xanh lá */
 }
 
 #messageBox.error {

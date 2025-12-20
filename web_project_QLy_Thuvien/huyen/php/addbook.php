@@ -26,8 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $image = $filename;
         }
     }
-
-    // Thêm vào DB
+    // Kiểm tra trùng mã sách
+    $sql_check = "SELECT * FROM sach WHERE ma_sach='$ma_sach'";
+    $result_check = mysqli_query($conn, $sql_check);
+    if (mysqli_num_rows($result_check) > 0) {
+        echo "duplicate";
+    }else{
+        // Thêm vào DB
     $sql_insert = "INSERT INTO sach (ma_sach, ten_sach, ten_tg, nha_xb, nam_xb, so_luong, ma_loai_sach, mo_ta, image, tinh_trang)
                    VALUES ('$ma_sach', '$ten_sach', '$ten_tg', '$nha_xb', '$nam_xb', '$so_luong', '$ma_loai_sach', '$mo_ta', '$image', '$tinh_trang')";
     if (mysqli_query($conn, $sql_insert)) {
@@ -35,6 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "error";
     }
+    }
+    mysqli_close($conn);
 }
 ?>
 <html>
