@@ -185,18 +185,6 @@ body {
     color: black;
 }
 
-.status:contains("Đã trả") {
-    background-color: #28a745;
-}
-.status:contains("Đang cho mượn") {
-    background-color: #007bff;
-}
-.status:contains("Trả chậm") {
-    background-color: #ffc107;
-}
-.status:contains("Quá hạn trả") {
-    background-color: #dc3545;
-}
 
 /* th:nth-child(1),
 td:nth-child(1) {

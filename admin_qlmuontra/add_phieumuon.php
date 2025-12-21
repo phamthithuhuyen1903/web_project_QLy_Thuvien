@@ -22,16 +22,17 @@ if ($result_sach) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ma_sv     = $_POST['ma_sv'];
-    $ma_sach   = $_POST['ma_sach'];
-    $ngaymuon  = $_POST['ngaymuon'];
-    $ngaytra   = $_POST['ngaytra'];
+    $ma_pm = $_POST['ma_pm'];
+    $ma_sv = $_POST['ma_sv'];
+    $ma_sach = $_POST['ma_sach'];
+    $ngaymuon = $_POST['ngaymuon'];
+    $ngaytra = $_POST['ngaytra'];
     $tinhtrang = $_POST['tinhtrang'];
 
-    $sql = "INSERT INTO phieu_muon (ma_sv, ma_sach, ngay_muon, ngay_tra, tinh_trang)
-            VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO phieu_muon (ma_pm, ma_sv, ma_sach, ngay_muon, ngay_tra, tinh_trang)
+            VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sssss", $ma_sv, $ma_sach, $ngaymuon, $ngaytra, $tinhtrang);
+    mysqli_stmt_bind_param($stmt, "ssssss", $ma_pm, $ma_sv, $ma_sach, $ngaymuon, $ngaytra, $tinhtrang);
 
     if (mysqli_stmt_execute($stmt)) {
         echo "<div style='text-align:center;
@@ -77,6 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="form-container">
         <h2>Thêm phiếu mượn</h2>
         <form method="post">
+            <div class="form-group">
+                <label for="ma_pm">Mã phiếu mượn</label>
+                <input type="text" name="ma_pm" id="ma_pm" placeholder="Nhập mã phiếu mượn" required>
+            </div>
+
             <div class="form-group">
                 <label for="ma_sv">Sinh viên</label>
                 <select name="ma_sv" id="ma_sv" required>

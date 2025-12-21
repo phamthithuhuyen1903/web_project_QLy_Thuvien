@@ -30,12 +30,12 @@
 
                     <div class="group_date">
                         <label for="ngaymuon">Ngày mượn:</label>
-                        <input type="date" id="ngaymuon" name="ngaymuon" value="<?= $_GET['ngaymuon'] ?? '' ?>">
+                        <input type="date" id="ngaymuon" name="ngaymuon" value="<?= $_GET['ngay_muon'] ?? '' ?>">
                     </div>
 
                     <div class="group_date">
                         <label for="ngaytra">Ngày trả:</label>
-                        <input type="date" id="ngaytra" name="ngaytra" value="<?= $_GET['ngaytra'] ?? '' ?>">
+                        <input type="date" id="ngaytra" name="ngaytra" value="<?= $_GET['ngay_tra'] ?? '' ?>">
                     </div>
 
                     <button type="submit">Tìm kiếm</button>
@@ -45,7 +45,7 @@
 
             <div class="bang">
                 <?php
-                    if(!empty($_GET['ten_sach']) || !empty($_GET['ma_sv']) || !empty($_GET['ho_ten']) || !empty($_GET['ngaymuon']) || !empty($_GET['ngaytra'])) {
+                    if(!empty($_GET['ten_sach']) || !empty($_GET['ma_sv']) || !empty($_GET['ho_ten']) || !empty($_GET['ngay_muon']) || !empty($_GET['ngay_tra'])) {
                         include 'search_phieumuon.php';
                     } else {
                         include 'loadData_phieumuon.php';
@@ -55,6 +55,31 @@
         </div>
     </div>
 
+    <script>
+    function deletePhieu(ma_pm) {
+        if(confirm("Bạn có chắc muốn xóa phiếu mượn này?")) {
+            window.location.href = "delete_phieumuon.php?ma_pm=" + ma_pm;
+        }
+    }
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuTitle = document.querySelector(".menu-title");
+        const submenu = document.querySelector(".submenu");
+
+        menuTitle.addEventListener("click", function (e) {
+        e.preventDefault();
+        submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+        });
+
+        document.addEventListener("click", function (e) {
+        if (!menuTitle.contains(e.target) && !submenu.contains(e.target)) {
+            submenu.style.display = "none";
+        }
+        });
+    });
+    </script>
     
 </body>
 </html>
