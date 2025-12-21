@@ -343,10 +343,9 @@ tbody tr:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     background: #fff;
-    border: 2px solid #333; /* viền luôn màu đen */
+    border: 2px solid #e8e1e1; 
     padding: 20px 30px;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
     z-index: 9999;
     text-align: center;
     display: none;

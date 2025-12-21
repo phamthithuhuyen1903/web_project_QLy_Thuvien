@@ -55,6 +55,7 @@ textarea {
     resize: none;
 }
 
+
 /* ===== BÊN PHẢI ===== */
 .form-right {
     flex: 1;
@@ -118,16 +119,16 @@ textarea {
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     font-size: 16px;
     z-index: 999;
-    color: white;
+    background: #eef5ef;
     font-weight: bold;
 }
 
 #messageBox.success {
-    background: #eef5ef; /* xanh lá */
+    color: #5cb85c;
 }
 
 #messageBox.error {
-    background: #f44336; /* đỏ */
+    color: #f44336; /* đỏ */
 }
 
 

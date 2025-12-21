@@ -1,9 +1,11 @@
 <?php
 include 'connect.php';
 
-// ==========================
-// LẤY DỮ LIỆU SÁCH THEO MÃ
-// ==========================
+// Lấy danh sách thể loại
+$sqlLoai = "SELECT * FROM loai_sach";
+$resLoai = mysqli_query($conn, $sqlLoai);
+
+// Lấy thông tin sách cần sửa
 $book = null;
 if (isset($_GET['masach'])) {
     $ma = $_GET['masach'];
@@ -15,101 +17,123 @@ if (isset($_GET['masach'])) {
     $book = mysqli_fetch_assoc($result);
 }
 
-// ==========================
-// LẤY DANH SÁCH THỂ LOẠI
-// ==========================
-$sqlLoai = "SELECT * FROM loai_sach";
-$resLoai = mysqli_query($conn, $sqlLoai);
-
-// ==========================
-// CẬP NHẬT SÁCH (AJAX POST)
-// ==========================
+// Xử lý form POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ma = $_POST['masach'];
     $ten = $_POST['tensach'];
     $tg = $_POST['tacgia'];
     $nxb = $_POST['nxb'];
-    $nam = $_POST['namxuatban'];
-    $sl = $_POST['soluong'];
+    $nam = (int)$_POST['namxuatban'];
+    $sl = (int)$_POST['soluong'];
+    $loai = $_POST['ma_loai_sach']; // VARCHAR
+    $tinhtrang = (int)$_POST['tinh_trang'];
     $mota = $_POST['mota'];
-    $loai = $_POST['ma_loai_sach'];
-    $tinhtrang = $_POST['tinh_trang'];
 
-    // Nếu có upload ảnh
+    // Xử lý upload ảnh
     $imagePath = "";
     if (!empty($_FILES['image']['name'])) {
-        $filename = basename($_FILES['image']['name']);
+        $filename = time() . "_" . basename($_FILES['image']['name']);
         $target = "../image/" . $filename;
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-            $imagePath = $filename;
+        $fileType = strtolower(pathinfo($target, PATHINFO_EXTENSION));
+        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+
+        if (in_array($fileType, $allowed)) {
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+                $imagePath = $filename;
+            }
         }
     }
-
+    //khi có ảnh mới
     if ($imagePath !== "") {
         $sql = "UPDATE sach 
                 SET ten_sach=?, ten_tg=?, nha_xb=?, nam_xb=?, so_luong=?, mo_ta=?, ma_loai_sach=?, tinh_trang=?, image=? 
                 WHERE ma_sach=?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "sssiiisis", $ten, $tg, $nxb, $nam, $sl, $mota, $loai, $tinhtrang, $imagePath, $ma);
+        mysqli_stmt_bind_param(
+            $stmt,
+            "sssiississ",
+            $ten,
+            $tg,
+            $nxb,
+            $nam,
+            $sl,
+            $mota,
+            $loai,
+            $tinhtrang,
+            $imagePath,
+            $ma
+        );
     } else {
         $sql = "UPDATE sach 
                 SET ten_sach=?, ten_tg=?, nha_xb=?, nam_xb=?, so_luong=?, mo_ta=?, ma_loai_sach=?, tinh_trang=? 
                 WHERE ma_sach=?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "sssiiisis", $ten, $tg, $nxb, $nam, $sl, $mota, $loai, $tinhtrang, $ma);
+        mysqli_stmt_bind_param(
+            $stmt,
+            "sssiissis",
+            $ten,
+            $tg,
+            $nxb,
+            $nam,
+            $sl,
+            $mota,
+            $loai,
+            $tinhtrang,
+            $ma
+        );
     }
 
     if (mysqli_stmt_execute($stmt)) {
         echo "success";
     } else {
-        echo "error";
+        echo "error: " . mysqli_error($conn);
     }
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="vi">
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
     <title>Sửa sách</title>
     <link rel="stylesheet" href="../css/updatebook.css">
 </head>
 
 <body>
     <h2>Sửa sách</h2>
+    <div id="messageBox"></div>
 
-    <form class="fromadd" enctype="multipart/form-data">
+    <form class="formupdate" method="POST" enctype="multipart/form-data">
         <div class="form-left">
 
             <div class="form-group">
                 <label>Mã sách</label>
                 <input type="text" id="masach" name="masach" readonly
-                    value="<?php echo $book['ma_sach'] ?? ''; ?>">
+                    value="<?php echo htmlspecialchars($book['ma_sach'] ?? '', ENT_QUOTES); ?>">
             </div>
 
             <div class="form-group">
                 <label>Tên sách</label>
-                <input type="text" id="tensach" name="tensach"
-                    value="<?php echo $book['ten_sach'] ?? ''; ?>">
+                <input type="text" id="tensach" name="tensach" required
+                    value="<?php echo htmlspecialchars($book['ten_sach'] ?? '', ENT_QUOTES); ?>">
             </div>
 
             <div class="form-group">
                 <label>Tác giả</label>
-                <input type="text" id="tacgia" name="tacgia"
-                    value="<?php echo $book['ten_tg'] ?? ''; ?>">
+                <input type="text" id="tacgia" name="tacgia" required
+                    value="<?php echo htmlspecialchars($book['ten_tg'] ?? '', ENT_QUOTES); ?>">
             </div>
 
             <div class="form-group">
                 <label>NXB</label>
-                <input type="text" id="nxb" name="nxb"
-                    value="<?php echo $book['nha_xb'] ?? ''; ?>">
+                <input type="text" id="nxb" name="nxb" required
+                    value="<?php echo htmlspecialchars($book['nha_xb'] ?? '', ENT_QUOTES); ?>">
             </div>
 
             <div class="form-group">
                 <label>Năm xuất bản</label>
-                <select name="namxuatban">
-                    <option value="">-- Chọn năm --</option>
+                <select name="namxuatban" required>
+                    <option value="" disabled selected hidden>-- Chọn năm --</option>
                     <?php
                     $nam_hien_tai = date("Y");
                     for ($i = $nam_hien_tai; $i >= 1900; $i--) {
@@ -122,19 +146,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-group">
                 <label>Số lượng</label>
-                <input type="number" id="soluong" name="soluong"
-                    value="<?php echo $book['so_luong'] ?? 0; ?>">
+                <input type="number" id="soluong" name="soluong" min="0" required
+                    value="<?php echo htmlspecialchars($book['so_luong'] ?? 0, ENT_QUOTES); ?>">
             </div>
 
             <div class="form-group">
                 <label>Thể loại</label>
-                <select name="ma_loai_sach">
-                    <option value="">-- Chọn thể loại --</option>
+                <select name="ma_loai_sach" required>
+                    <option value="" disabled selected hidden>-- Chọn thể loại --</option>
                     <?php
                     if ($resLoai && mysqli_num_rows($resLoai) > 0) {
                         while ($row = mysqli_fetch_assoc($resLoai)) {
                             $selected = ($book && $book['ma_loai_sach'] == $row['ma_loai_sach']) ? "selected" : "";
-                            echo "<option value='" . $row['ma_loai_sach'] . "' $selected>" . $row['ten_loai_sach'] . "</option>";
+                            echo "<option value='" . htmlspecialchars($row['ma_loai_sach'], ENT_QUOTES) . "' $selected>"
+                                . htmlspecialchars($row['ten_loai_sach'], ENT_QUOTES) . "</option>";
                         }
                     }
                     ?>
@@ -143,7 +168,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-group">
                 <label>Tình trạng</label>
-                <select name="tinh_trang">
+                <select name="tinh_trang" required>
+                    <option value="" disabled selected hidden>-- Chọn tình trạng --</option>
                     <option value="1" <?php echo ($book && $book['tinh_trang'] == 1) ? "selected" : ""; ?>>Còn</option>
                     <option value="0" <?php echo ($book && $book['tinh_trang'] == 0) ? "selected" : ""; ?>>Hết</option>
                 </select>
@@ -151,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-group full">
                 <label>Mô tả</label>
-                <textarea id="mota" name="mota"><?php echo $book['mo_ta'] ?? ''; ?></textarea>
+                <textarea id="mota" name="mota"><?php echo htmlspecialchars($book['mo_ta'] ?? '', ENT_QUOTES); ?></textarea>
             </div>
 
         </div>
@@ -163,14 +189,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="image">
                 <?php if (!empty($book['image'])): ?>
-                    <img src="../image/<?php echo basename($book['image']); ?>" width="100">
+                    <img src="../image/<?php echo htmlspecialchars(basename($book['image']), ENT_QUOTES); ?>" width="100">
                 <?php endif; ?>
             </div>
 
-            <button type="submit" class="btnthem">Sửa</button>
+            <button type="submit" class="btnupdate">Sửa</button>
         </div>
     </form>
-
 
     <!-- Gọi file JS riêng -->
     <script src="../js/updatebook.js"></script>

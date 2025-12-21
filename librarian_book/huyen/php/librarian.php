@@ -13,8 +13,9 @@
         <ul class="menu">
             <li class="menuparent"> Quản lý sách
                 <ul class="submenu">
-                    <li><a href="danhmucsach.php" id="linkDanhMuc">Danh mục sách</a></li>
-                    <li><a href="theloai.php" id="linkTheLoai">Thể loại</a></li>
+                    <!-- <li><a href="#" data-page="danhmucsach.php" id="linkDanhMuc">Danh mục sách</a></li>
+                    <li><a href="#" data-page="theloai.php" id="linkTheLoai">Thể loại</a></li> -->
+
                 </ul>
             </li>
             <li>Quản lý mượn trả sách</li>
@@ -26,10 +27,11 @@
             </li>
         </ul>
     </nav>
-    <!-- vùng hiển thị nội dung -->
-    <main>
-        <div id="mainContent"></div>
-    </main>
+    <!-- <div id="mainContent">
+    </div> -->
+
+
+
     <script src="../js/librarian.js"></script>
 
 </body>

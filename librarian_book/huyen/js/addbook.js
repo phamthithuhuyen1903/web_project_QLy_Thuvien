@@ -5,6 +5,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const messageBox = document.getElementById("messageBox");
     const formAdd = document.querySelector(".fromadd");
 
+    //ẩn thông báo khi người dùng nhập lại
+    formAdd.querySelectorAll("input, select, textarea").forEach(element => {
+        element.addEventListener("input",() => {
+            messageBox.style.display = "none";
+            messageBox.textContent = "";
+            messageBox.className = "";
+        });
+    }); 
     btnUpload.addEventListener("click", function() {
         inputFile.click();
     });
@@ -23,30 +31,34 @@ document.addEventListener("DOMContentLoaded", function() {
     formAdd.addEventListener("submit", function(event) {
         event.preventDefault();
 
+        // // // reset thông báo trước khi gửi
+        // messageBox.style.display = "none";
+        // messageBox.textContent = "";
+        // messageBox.className = "";
+
         const formData = new FormData(formAdd);
 
-        fetch(window.location.href, {
+        fetch("addbook.php", {   // gọi trực tiếp file xử lý PHP
             method: "POST",
             body: formData
         })
         .then(response => response.text())
         .then(data => {
-            if (data.includes("success")) {
+            const result = data.trim(); // loại bỏ khoảng trắng, xuống dòng
+
+            if (result === "success") {
                 messageBox.textContent = "Thêm thành công!";
                 messageBox.className = "success";
                 messageBox.style.display = "block";
 
-                formAdd.reset();
-                preview.innerHTML = "";
-
                 setTimeout(() => {
                     window.location.href = "danhmucsach.php";
-                }, 2000);
-            }else if (data.includes("duplicate")) {
+                }, 1500);
+            } else if (result === "duplicate") {
                 messageBox.textContent = "Mã sách đã tồn tại, vui lòng nhập lại!";
                 messageBox.className = "error";
                 messageBox.style.display = "block";
-            }else {
+            } else {
                 messageBox.textContent = "Thêm sách không thành công!";
                 messageBox.className = "error";
                 messageBox.style.display = "block";
@@ -55,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             messageBox.textContent = "Có lỗi xảy ra khi gửi dữ liệu!";
             messageBox.className = "error";
+            messageBox.style.display = "block";
             console.error("Lỗi:", error);
         });
     });

@@ -1,25 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector(".fromadd");
-    if (!form) return;
-
-    // Hộp thông báo
-    const messageBox = document.createElement("div");
-    messageBox.id = "messageBox";
-    messageBox.style.display = "none";
-    messageBox.style.position = "fixed";
-    messageBox.style.top = "20px";
-    messageBox.style.left = "50%";
-    messageBox.style.transform = "translateX(-50%)";
-    messageBox.style.background = "#4CAF50";
-    messageBox.style.color = "#fff";
-    messageBox.style.padding = "10px 20px";
-    messageBox.style.borderRadius = "5px";
-    document.body.appendChild(messageBox);
-
-    // Xử lý nút Upload
+    const form = document.querySelector(".formupdate");
+    const messageBox = document.getElementById("messageBox");
     const btnUpload = document.getElementById("btnUpload");
     const fileInput = document.getElementById("fileInput");
 
+    if (!form) return;
+
+    // ===== Xử lý nút Upload =====
     if (btnUpload && fileInput) {
         btnUpload.addEventListener("click", () => {
             fileInput.click();
@@ -31,13 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(ev) {
-                    const imgPreview = document.querySelector(".image img");
+                    let imgPreview = document.querySelector(".image img");
                     if (imgPreview) {
                         imgPreview.src = ev.target.result;
                     } else {
                         const newImg = document.createElement("img");
                         newImg.src = ev.target.result;
-                        newImg.width = 100;
+                        newImg.style.maxWidth = "100%";
+                        newImg.style.maxHeight = "100%";
                         document.querySelector(".image").appendChild(newImg);
                     }
                 };
@@ -46,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Xử lý submit form
+    // ===== Xử lý submit form =====
     form.addEventListener("submit", e => {
         e.preventDefault();
         const formData = new FormData(form);
@@ -57,25 +45,25 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(res => res.text())
         .then(data => {
+            messageBox.style.display = "block";
+            messageBox.className = ""; // reset class
+
             if (data.trim() === "success") {
                 messageBox.innerText = "Cập nhật thành công!";
-                messageBox.style.background = "#4CAF50";
-                messageBox.style.display = "block";
-
+                messageBox.classList.add("success");
                 setTimeout(() => {
-                    messageBox.style.display = "none";
                     window.location.href = "danhmucsach.php";
-                }, 2000);
+                }, 1500);
             } else {
                 messageBox.innerText = "Cập nhật thất bại!";
-                messageBox.style.background = "#f44336";
-                messageBox.style.display = "block";
+                messageBox.classList.add("error");
             }
         })
         .catch(err => {
-            messageBox.innerText = "Có lỗi xảy ra: " + err.message;
-            messageBox.style.background = "#f44336";
             messageBox.style.display = "block";
+            messageBox.className = "";
+            messageBox.innerText = "Có lỗi xảy ra: " + err.message;
+            messageBox.classList.add("error");
         });
     });
 });

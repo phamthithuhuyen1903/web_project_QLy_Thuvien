@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Danh sách thể loại</title>
-    <!-- <link rel="stylesheet" href="../css/index.css"> -->
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 
 <body>

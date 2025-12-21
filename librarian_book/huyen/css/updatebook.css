@@ -13,7 +13,7 @@ h2 {
 }
 
 /* ===== FORM CHÍNH ===== */
-.fromadd {
+.formupdate {
     display: flex;
     gap: 40px;
 }
@@ -54,6 +54,29 @@ textarea {
     height: 80px;
     resize: none;
 }
+#messageBox {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    font-size: 16px;
+    z-index: 999;
+    background: #eef5ef;
+    font-weight: bold;
+}
+
+#messageBox.success {
+    color: #5cb85c;
+}
+
+#messageBox.error {
+    color: #f44336; /* đỏ */
+}
+
 
 /* ===== BÊN PHẢI ===== */
 .form-right {
@@ -94,11 +117,11 @@ textarea {
     cursor: pointer;
 }
 
-/* nút thêm */
-.btnthem {
+/* nút sửa */
+.btnupdate {
     margin-top: auto;
     align-self: flex-end;
-    background: #337ab7;
+    background: #0e4b80;
     color: white;
     border: none;
     padding: 8px 20px;

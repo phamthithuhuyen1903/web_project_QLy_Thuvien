@@ -14,6 +14,70 @@ if (isset($_POST['action']) && $_POST['action'] == "delete") {
     }
     exit;
 }
+// TÌM KIẾM SÁCH THEO TÊN
+if (isset($_GET['action']) && $_GET['action'] == "search") {
+    $keyword = mysqli_real_escape_string($conn, $_GET['keyword']);
+
+    $sql = "SELECT sach.*, loai_sach.ten_loai_sach,
+                   CASE WHEN sach.tinh_trang = 1 THEN 'Còn' ELSE 'Hết' END AS tinh_trang_hien_thi
+            FROM sach
+            JOIN loai_sach ON sach.ma_loai_sach = loai_sach.ma_loai_sach
+            WHERE sach.ma_sach LIKE '%$keyword%'
+               OR sach.ten_sach LIKE '%$keyword%'
+               OR sach.ten_tg LIKE '%$keyword%'
+               OR sach.nha_xb LIKE '%$keyword%'
+               OR loai_sach.ten_loai_sach LIKE '%$keyword%'";
+
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $filename = trim(basename($row['image']));
+            $src = "../image/" . $filename;
+            if (empty($filename)) {
+                $src = "../image/default.jpg";
+            }
+
+            echo "<tr data-row='{$row['ma_sach']}'>
+                    <td>{$row['ma_sach']}</td>
+                    <td>{$row['ten_sach']}</td>
+                    <td><img src='{$src}' alt='Ảnh sách' width='50'></td>
+                    <td>{$row['ten_loai_sach']}</td>
+                    <td>{$row['ten_tg']}</td>
+                    <td>{$row['nha_xb']}</td>
+                    <td>{$row['nam_xb']}</td>
+                    <td>{$row['so_luong']}</td>
+                    <td>{$row['tinh_trang_hien_thi']}</td>
+                    <td>
+                        <a href='viewbook.php?masach={$row['ma_sach']}' title='Xem' class='btn-view'>
+                            <i class='fa-solid fa-eye'></i>
+                        </a>
+                        <a href='updatebook.php?masach={$row['ma_sach']}' title='Sửa' class='btn-edit'>
+                            <i class='fa-solid fa-pen-to-square'></i>
+                        </a>
+                        <button class='btn-delete' data-id='{$row['ma_sach']}' title='Xóa'>
+                            <i class='fas fa-trash-alt'></i>
+                        </button>
+                    </td>
+                  </tr>";
+        }
+    } else {
+        echo "<tr><td colspan='10'>Không tìm thấy sách nào.</td></tr>";
+    }
+    exit;
+}
+
+// XEM SÁCH
+if (isset($_GET['action']) && $_GET['action'] == "view" && isset($_GET['masach'])) {
+    $ma = mysqli_real_escape_string($conn, $_GET['masach']);
+    $sql = "SELECT * FROM sach WHERE ma_sach = '$ma'";
+    $result = mysqli_query($conn, $sql);
+    if ($row = mysqli_fetch_assoc($result)) {
+        echo json_encode($row);
+    }
+    exit;
+}
+
 
 
 //LOAD TABLE
@@ -42,7 +106,7 @@ if (isset($_GET['action']) && $_GET['action'] == "load") {
             echo "<td>{$row['so_luong']}</td>";
             echo "<td>{$row['tinh_trang_hien_thi']}</td>";
             echo "<td>
-                        <a href='viewbook.php?masach={$row['ma_sach']}' title='Xem' class='btn-view'>
+                        <a href='danhmucsach.php?action=view&masach={$row['ma_sach']}' class='btn-view'>
                         <i class='fa-solid fa-eye'></i>
                         </a>
                         <a href='updatebook.php?masach={$row['ma_sach']}' title='Sửa' class='btn-edit'>
@@ -119,6 +183,33 @@ mysqli_close($conn);
         <p id="popupText"></p>
         <button id="popupClose">Đóng</button>
     </div>
+
+    <!-- FORM XEM THÔNG TIN SÁCH -->
+    <div id="viewbook" class="modal">
+        <div class="content">
+            <span class="btnclose" id="closeView">&times;</span>
+            <h2>Thông tin Sách</h2>
+            <div class="book-form">
+                <div class="book-image">
+                    <img id="image" src="" alt="Ảnh sách">
+                </div>
+                <div class="book-info">
+                    <p><strong>Tên sách:</strong> <span id="tensach"></span></p>
+                    <p><strong>Tác giả:</strong> <span id="tacgia"></span></p>
+                    <p><strong>Nhà xuất bản:</strong> <span id="nxb"></span></p>
+                    <p><strong>Xuất bản:</strong> <span id="namxb"></span></p>
+                    <p><strong>Số lượng:</strong> <span id="soluong"></span></p>
+                    <p><strong>Tình trạng:</strong> <span id="tinhtrang"></span></p>
+                </div>
+            </div>
+            <div class="book-description">
+                <h3>Mô tả:</h3>
+                <p id="mota"></p>
+            </div>
+        </div>
+    </div>
+
+
 
 
 

@@ -13,6 +13,7 @@ function showFormMessage(id, message, type) {
     box.style.display = "block";
 }
 
+
 /*FORM THÊM*/
 document.querySelector(".add").addEventListener("click", () => {
     document.getElementById("addFormModal").style.display = "flex";

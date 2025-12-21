@@ -2,37 +2,41 @@
 include 'connect.php';
 
 // Lấy danh sách thể loại
-$sql = "select * from loai_sach";
+$sql = "SELECT * FROM loai_sach";
 $result = mysqli_query($conn, $sql);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ma_sach = $_POST['ma_sach'];
-    $ten_sach = $_POST['ten_sach'];
-    $ten_tg = $_POST['ten_tg'];
-    $nha_xb = $_POST['nha_xb'];
-    $nam_xb = $_POST['nam_xb'];
-    $so_luong = $_POST['so_luong'];
-    $ma_loai_sach = $_POST['ma_loai_sach'];
-    $mo_ta = $_POST['mo_ta'];
-    $tinh_trang = $_POST['tinh_trang'];
+    $ma_sach       = trim($_POST['ma_sach']);
+    $ten_sach      = trim($_POST['ten_sach']);
+    $ten_tg        = trim($_POST['ten_tg']);
+    $nha_xb        = trim($_POST['nha_xb']);
+    $nam_xb        = trim($_POST['nam_xb']);
+    $so_luong      = trim($_POST['so_luong']);
+    $ma_loai_sach  = trim($_POST['ma_loai_sach']);
+    $mo_ta         = trim($_POST['mo_ta']);
+    $tinh_trang    = trim($_POST['tinh_trang']);
 
-    // Upload ảnh (giữ nguyên name="hinhanh")
+    // Upload ảnh
     $image = '';
-    if (isset($_FILES['hinhanh']) && $_FILES['hinhanh']['error'] == 0) {
-        $target_dir = "../image/";
-        $filename = basename($_FILES["hinhanh"]["name"]);
+    if (isset($_FILES['hinhanh']) && $_FILES['hinhanh']['error'] === 0) {
+        $target_dir  = "../image/";
+        $filename    = basename($_FILES["hinhanh"]["name"]);
         $target_file = $target_dir . $filename;
         if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], $target_file)) {
             $image = $filename;
         }
     }
+
     // Kiểm tra trùng mã sách
-    $sql_check = "SELECT * FROM sach WHERE ma_sach='$ma_sach'";
+    $sql_check   = "SELECT 1 FROM sach WHERE ma_sach='$ma_sach' LIMIT 1";
     $result_check = mysqli_query($conn, $sql_check);
-    if (mysqli_num_rows($result_check) > 0) {
+    if ($result_check && mysqli_num_rows($result_check) > 0) {
         echo "duplicate";
-    }else{
-        // Thêm vào DB
+        mysqli_close($conn);
+        exit;
+    }
+
+    // Thêm vào DB
     $sql_insert = "INSERT INTO sach (ma_sach, ten_sach, ten_tg, nha_xb, nam_xb, so_luong, ma_loai_sach, mo_ta, image, tinh_trang)
                    VALUES ('$ma_sach', '$ten_sach', '$ten_tg', '$nha_xb', '$nam_xb', '$so_luong', '$ma_loai_sach', '$mo_ta', '$image', '$tinh_trang')";
     if (mysqli_query($conn, $sql_insert)) {
@@ -40,10 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "error";
     }
-    }
     mysqli_close($conn);
+    exit;
 }
 ?>
+
 <html>
 
 <head>
@@ -82,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group">
                 <label>Năm xuất bản</label>
                 <select name="nam_xb">
-                    <option value="">-- Chọn năm --</option>
+                    <option value="" disabled selected hidden>-- Chọn năm --</option>
                     <?php
                     $nam_hien_tai = date("Y");
                     for ($i = $nam_hien_tai; $i >= 1900; $i--) {
@@ -99,8 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-group">
                 <label>Thể loại</label>
-                <select name="ma_loai_sach">
-                    <option value="">-- Chọn thể loại --</option>
+                <select name="ma_loai_sach" required>
+                    <option value="" disabled selected hidden>-- Chọn thể loại --</option>
                     <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo "<option value='" . $row['ma_loai_sach'] . "'>" . $row['ten_loai_sach'] . "</option>";
@@ -111,7 +116,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-group">
                 <label>Tình trạng</label>
-                <select name="tinh_trang">
+                <select name="tinh_trang" required>
+                    <option value="" disabled selected hidden>--Chọn tình trạng--</option>
                     <option value="1">Còn</option>
                     <option value="0">Hết</option>
                 </select>
