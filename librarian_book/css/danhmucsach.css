@@ -1,0 +1,432 @@
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+
+header {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.button {
+  display: flex;
+  justify-content: center;   
+  align-items: center;       
+  gap: 12px;                
+  margin-bottom: 20px;
+}
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 300px;
+  margin-bottom: 0;      
+}
+
+
+.search-bar input[type="text"] {
+  width: 100%;
+  height: 40px;                       
+  padding: 0 14px 0 38px;             
+  border: 1px solid #dcdde1;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 40px;                  
+  transition: 0.2s;
+  box-sizing: border-box;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b2bec3;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+
+.add {
+  background: #0984e3;
+  color: white;
+  height: 40px;                       
+  padding: 0 16px;                     
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 40px;                  
+  cursor: pointer;
+  transition: 0.2s;
+  box-sizing: border-box;
+  text-decoration: none;
+  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add:hover {
+  background: #04518c;
+}
+
+/* ===== BẢNG ===== */
+table {
+    width: 90%;              
+    max-width: 1200px;      
+    margin: 20px auto;       
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+table th, table td {
+    border: 1px solid #cdcfd7;
+    padding: 8px 12px;
+    text-align: center;   
+    vertical-align: middle;
+}
+
+
+/* Header */
+table th {
+    background-color: #a4c1ef;
+    font-weight: bold;
+}
+
+/* Cột 1: Mã sách */
+table th:nth-child(1),
+table td:nth-child(1) {
+    width: 70px;
+    text-align: center;
+}
+
+/* Cột 2: Tên sách */
+table th:nth-child(2),
+table td:nth-child(2) {
+    width: 250px;
+}
+
+/* Cột 3: Hình ảnh */
+table th:nth-child(3),
+table td:nth-child(3) {
+    width: 100px;
+    text-align: center;
+}
+
+/* Cột 4: Thể loại */
+table th:nth-child(4),
+table td:nth-child(4) {
+    width: 150px;
+}
+
+/* Cột 5: Tác giả */
+table th:nth-child(5),
+table td:nth-child(5) {
+    width: 150px;
+}
+
+/* Cột 6: Nhà xuất bản */
+table th:nth-child(6),
+table td:nth-child(6) {
+    width: 150px;
+}
+
+/* Cột 7: Năm xuất bản */
+table th:nth-child(7),
+table td:nth-child(7) {
+    width: 90px;
+    text-align: center;
+}
+
+/* Cột 8: Số lượng */
+table th:nth-child(8),
+table td:nth-child(8) {
+    width: 90px;
+    text-align: center;
+}
+
+/* Cột 9: Tình trạng */
+table th:nth-child(9),
+table td:nth-child(9) {
+    width: 120px;
+    text-align: center;
+}
+
+/* Cột 10: Thao tác */
+table th:nth-child(10),
+table td:nth-child(10) {
+    width: 150px;
+    text-align: center;
+}
+
+/* Responsive: khi màn hình nhỏ thì bảng co lại */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+    table th, table td {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+
+/* ICON thao tác */
+.btn-view, .btn-edit, .btn-delete{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 6px;
+    transition: 0.2s;
+}
+.btn-view i {
+    color: #101110;
+}
+.btn-view:hover i {
+    transform: scale(1.2);
+}
+.btn-edit i {
+    color: #0411a1;
+}
+.btn-edit:hover i {
+    transform: scale(1.2);
+}
+.btn-delete i {
+    color: #d40c0c;
+}
+.btn-delete:hover i {
+    transform: scale(1.2);
+}
+
+/* POPUP YES / NO */
+.confirm-box {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.confirm-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.confirm-content p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.confirm-actions {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#yesDelete {
+    background: #d63031;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#noDelete {
+    background: #0984e3;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#yesDelete:hover {
+    background: #b82525;
+}
+
+#noDelete:hover {
+    background: #0773c7;
+}
+/* Hộp thoại thông báo */
+.popup-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border: 2px solid #333; /* viền luôn màu đen */
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    text-align: center;
+    display: none;
+}
+
+
+.popup-message.success {
+    color: green;
+}
+
+.popup-message.error {
+    color: red;
+}
+
+
+.popup-message button {
+    margin-top: 10px;
+    padding: 6px 10px;
+    border: none;
+    background: #05038a; 
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+/* xem chi tiết sach */
+.book-detail-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.book-detail {
+    display: flex;
+    gap: 30px;
+}
+
+.book-image img {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.book-info p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.actions button {
+    padding: 8px 16px;
+    background: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background: #286090;
+}
+
+
+
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: auto;
+}
+.modal .content{
+    position: relative;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 800px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    font-family: 'Segoe UI', sans-serif;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+.btnclose{
+    position: absolute;
+    top : 15px;
+    right: 20px;
+    font-size: 30px;
+    color:#333;
+    cursor: default;
+
+}
+.btnclose:hover{
+    color:#db0c0c;
+}
+.modal .content h2{
+    margin-top: 0;
+    text-align: center ;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.book-form{
+   display: flex;
+   gap: 20px;
+   align-items: flex-start;
+}
+.book-image img {
+    width: 150px;       
+    height: 180px;      
+    object-fit: cover;  
+    border-radius: 5px; 
+    display: block;    
+    border: none;
+}
+
+.book-info {
+    flex: 1;
+}   
+.book-info p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+.book-description {
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    word-wrap: break-word;
+    white-space: pre-line;;
+}
+.book-description h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+.book-description p {
+    font-size: 14px;
+    line-height: 1.5;
+}
