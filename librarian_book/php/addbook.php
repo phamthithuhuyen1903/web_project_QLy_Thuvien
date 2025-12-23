@@ -195,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 const formData = new FormData(formAdd);
 
-                fetch("addbook.php", { // gọi trực tiếp file xử lý PHP
+                fetch("", { // gọi trực tiếp file xử lý PHP
                         method: "POST",
                         body: formData
                     })
