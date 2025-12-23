@@ -36,7 +36,7 @@ function showDeleteConfirm(ma) {
                 showPopupMessage( "Xóa thành công", "success");
                 loadTable(); // tải lại bảng sau khi xóa
             } else {
-                showPopupMessage("Xóa không thông", "error");
+                showPopupMessage("Xóa không thành công", "error");
             }
         });
 
