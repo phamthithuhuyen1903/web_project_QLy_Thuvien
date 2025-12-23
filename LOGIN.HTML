@@ -18,7 +18,7 @@
         <form action="login_process.php" method="POST">
             <div class="input-group">
                 <label for="username">Tài khoản</label>
-                <input type="text" id="username" name="username" placeholder="Mã NV hoặc Mã SV" required>
+                <input type="text" id="username" name="username" placeholder="Nhập Mã SV hoặc Mã Admin" required>
             </div>
 
             <div class="input-group">
@@ -31,11 +31,17 @@
     </div>
 
     <script>
-        // Kiểm tra nếu trên URL có tham số ?error=1 thì hiển thị thông báo
+        // Script xử lý hiển thị lỗi từ URL
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('error')) {
             const errorDiv = document.getElementById('error-container');
-            errorDiv.innerHTML = '<div class="alert-error">Sai tài khoản hoặc mật khẩu!</div>';
+            // Thêm class 'alert-error' đã được định nghĩa trong file CSS
+            errorDiv.innerHTML = '<div class="alert-error">Sai tên tài khoản hoặc mật khẩu!</div>';
+            
+            // Tự động ẩn sau 5 giây
+            setTimeout(() => {
+                errorDiv.innerHTML = '';
+            }, 5000);
         }
     </script>
 </body>

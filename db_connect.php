@@ -1,7 +1,7 @@
 <?php
 // db_connect.php dùng cho MySQL (phpMyAdmin)
 $host = "localhost";
-$dbname = "phanquyen"; // Tên database viết thường như trong ảnh phpMyAdmin
+$dbname = "demo_quanlythuvien"; // Tên database viết thường như trong phpMyAdmin
 $username = "root";    // Mặc định của XAMPP
 $password = "";        // Mặc định của XAMPP để trống
 

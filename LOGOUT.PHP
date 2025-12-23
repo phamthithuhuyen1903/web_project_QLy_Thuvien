@@ -3,6 +3,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: LOGIN.html");
+header("Location: LOGIN.HTML");
 exit();
 ?>

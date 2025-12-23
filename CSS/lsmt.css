@@ -1,90 +1,91 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
-}
+/* --- Css/lsmt.css --- */
 
 body {
-    background-color: #f4f7f6;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
     padding: 20px;
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 header {
-    border-bottom: 2px solid #0056b3;
-    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
     margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding-bottom: 10px;
 }
 
-header h2 { color: #0056b3; }
-
-/* --- PHẦN MỚI: Thanh tìm kiếm dành cho Admin --- */
-.search-box {
-    margin-bottom: 25px;
-    display: flex;
-    justify-content: flex-end; /* Đẩy thanh tìm kiếm sang phải */
+header h2 {
+    color: #004a99;
+    margin: 0 0 10px 0;
 }
 
-.search-form {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.search-form input {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 280px;
-    outline: none;
-    transition: 0.3s;
-}
-
-.search-form input:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 5px rgba(0, 86, 179, 0.2);
-}
-
-.btn-search {
-    padding: 10px 20px;
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-search:hover {
-    background-color: #004494;
-}
-
-.btn-clear {
-    font-size: 13px;
+header p {
     color: #666;
-    text-decoration: none;
-    margin-left: 5px;
 }
 
-.btn-clear:hover {
-    color: #333;
+header a {
+    color: #004a99;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+header a:hover {
     text-decoration: underline;
 }
 
-.table-responsive { overflow-x: auto; }
+/* --- Style cho thanh tìm kiếm (Admin) --- */
+.search-bar {
+    margin: 20px 0;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 9px 15px;
+    background: #004a99;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-bar button:hover {
+    background: #003377;
+}
+
+.btn-clear {
+    color: #dc3545;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.btn-clear:hover {
+    text-decoration: underline;
+}
+
+/* --- Style cho Bảng dữ liệu --- */
+.table-responsive {
+    overflow-x: auto;
+}
 
 table {
     width: 100%;
@@ -93,36 +94,50 @@ table {
 }
 
 th, td {
-    padding: 15px;
+    border: 1px solid #ddd;
+    padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #eee;
 }
 
 th {
-    background-color: #f8f9fa;
-    color: #333;
-    font-weight: 600;
-}
-
-tr:hover { background-color: #fcfcfc; }
-
-/* Trạng thái */
-.badge {
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
+    background-color: #004a99;
     color: white;
+    white-space: nowrap;
 }
 
-.bg-success { background-color: #28a745; } /* Đã trả */
-.bg-warning { background-color: #ffc107; color: #333; } /* Chưa trả */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+/* --- Style cho Trạng thái (Badge) --- */
+.badge {
+    padding: 6px 10px;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.85em;
+    display: inline-block;
+}
+
+.bg-success {
+    background-color: #28a745; /* Màu xanh lá: Đã trả */
+}
+
+.bg-warning {
+    background-color: #ffc107; /* Màu vàng: Đang mượn */
+    color: #333;
+}
+
+.bg-danger {
+    background-color: #dc3545; /* Màu đỏ: Quá hạn/Lỗi */
+}
 
 .not-returned {
-    color: #dc3545;
+    color: #999;
     font-style: italic;
-    font-size: 13px;
+    font-size: 0.9em;
 }
-
-a { color: #0056b3; text-decoration: none; font-weight: bold; }
-a:hover { text-decoration: underline; }
