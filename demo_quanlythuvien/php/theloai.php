@@ -19,7 +19,7 @@ if (isset($_GET['ms'])) {
 }
 
 ?>
-
+<link rel="stylesheet" href="../css/theloai.css">
 <?php if ($ma_loai == null) { ?>
     <h2>DANH SÁCH THỂ LOẠI</h2>
     <ul class="theloai_list">
@@ -69,29 +69,36 @@ if (isset($_GET['ms'])) {
                 </tr>
                 <?php
                 $stt = 1;
-                while ($b = mysqli_fetch_assoc($books)) {
+                while ($sach = mysqli_fetch_assoc($books)) {
                 ?>
-                    <tr onclick="location='chitiet_sach.php?ml=<?php echo $ma_loai; ?>&ms=<?php echo $b['ma_sach'] ?>'" style="cursor:pointer;">
+                    <tr onclick="location='chitiet_sach.php?ml=<?php echo $ma_loai; ?>&ms=<?php echo $sach['ma_sach'] ?>'" style="cursor:pointer;">
                         <td><?= $stt ?></td>
-                        <td><img src="images/<?php echo $b['hinh'] ?? 'no-image.png' ?>" width="60"></td>
-                        <td><?php echo $b['ten_sach'] ?></td>
-                        <td><?php echo $b['ten_tg'] ?></td>
-                        <td><?php echo $b['nha_xb'] ?></td>
-                        <td><?php echo $b['nam_xb'] ?></td>
-                        <td><?php echo $b['so_luong'] ?></td>
-                        <td><?php echo $b['tinh_trang'] == 1 ? 'Còn' : 'Hết' ?></td>
+                        <td>
+                            <?php
+                            $hinh = 'no-image.png';
+                            if (isset($sach['hinh']) && $sach['hinh'] != '') {
+                                $hinh = $sach['hinh'];
+                            }
+
+                            ?>
+                            <img src="../images/<?php echo $hinh; ?>" alt="Hình minh họa" />
+                        </td>
+                        <td><?php echo $sach['ten_sach'] ?></td>
+                        <td><?php echo $sach['ten_tg'] ?></td>
+                        <td><?php echo $sach['nha_xb'] ?></td>
+                        <td><?php echo $sach['nam_xb'] ?></td>
+                        <td><?php echo $sach['so_luong'] ?></td>
+                        <td><?php echo $sach['tinh_trang'] == 1 ? 'Còn' : 'Hết' ?></td>
                     </tr>
                 <?php
                     $stt++;
                 }
                 ?>
             </table>
-        <?php
+            <?php
         } else {
             echo "<p>Không tìm thấy sách nào.</p>";
         }
-        ?>
-        <br><a href="index.php?id=theloai">← Quay lại danh sách thể loại</a>
-<?php
-    }
-} ?>
+            ?><?php
+            }
+        } ?>

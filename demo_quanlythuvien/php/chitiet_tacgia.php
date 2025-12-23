@@ -35,13 +35,20 @@ $result_sach = mysqli_query($conn, $sql_sach);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $tacgia['ten_tg'] ?></title>
+    <link rel="stylesheet" href="../css/chitiet_tacgia.css">
 </head>
 
 <body>
-    <h2>HỒ SƠ TÁC GIẢ</h2>
     <div class="chitiet-tg">
-        <div>
-            <img src="images/<?php echo $tacgia['hinh'] ?? 'no-image.png' ?>">
+        <div class="tg-images">
+            <?php
+            $hinh = 'no-image.png';
+            if (isset($tacgia['hinh']) && $tacgia['hinh'] != '') {
+                $hinh = $tacgia['hinh'];
+            } 
+            ?>
+            <img src="../images/<?php echo $hinh; ?>" alt="Hình minh họa" />
+
         </div>
         <div>
             <p><strong>Họ và tên:</strong><?php echo $tacgia['ten_tg'] ?></p>
@@ -56,8 +63,6 @@ $result_sach = mysqli_query($conn, $sql_sach);
             </ul>
         </div>
     </div>
-    <br>
-    <a href="javascript:history.back()">← Quay lại</a>
 </body>
 
 </html>

@@ -15,6 +15,10 @@ if (isset($_GET['id'])) {
             include 'yeuthich.php';
             break;
 
+        case 'chitiet_yeuthich':
+            include 'chitiet_yeuthich.php';
+            break;
+
         default:
             echo "<p>Không tìm thấy nội dung</p>";
     }

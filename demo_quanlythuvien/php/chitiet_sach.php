@@ -1,17 +1,9 @@
 <?php
 include("connect.php");
-
+$ma_loai = null;
 if (isset($_GET['ml'])) {
     $ma_loai = $_GET['ml'];
-} else {
-    $ma_loai = null;
 }
-
-// if (isset($_GET['ms'])) {
-//     $ma_sach = $_GET['ms'];
-// } else {
-//     $ma_sach = null;
-// }
 
 // Lấy mã sách từ URL
 if (!isset($_GET['ms'])) {
@@ -39,13 +31,22 @@ if (!$sach) {
     <meta charset="UTF-8">
     <title>Chi tiết sách - <?php echo $sach['ten_sach'] ?></title>
     <link rel="stylesheet" href="../css/chitiet_sach.css">
-    <link rel="stylesheet" href="../css/yeuthich.css">
+
 </head>
 
 <body>
     <div class="chitiet-tl">
         <form action="yeuthich.php?action=add&ms=<?php echo $ma_sach ?>&ml=<?php echo $ma_loai ?>" method="post">
             <h2><?php echo $sach['ten_sach'] ?></h2>
+            <div class="image">
+                <?php
+                $hinh = 'no-image.png';
+                if (isset($sach['hinh']) && $sach['hinh'] != '') {
+                    $hinh = $sach['hinh'];
+                }
+                ?>
+                <img src="../images/<?php echo $hinh; ?>" alt="Hình minh họa" />
+            </div>
             <p><strong>Tác giả:</strong> <?php echo $sach['ten_tg'] ?></p>
             <p><strong>Nhà xuất bản:</strong> <?php echo $sach['nha_xb'] ?></p>
             <p><strong>Năm xuất bản:</strong> <?php echo $sach['nam_xb'] ?></p>
@@ -76,11 +77,6 @@ if (!$sach) {
 
 
         </form>
-        <br><br>
-        <div class="image">
-            <img src="images/<?php echo $sach['hinh'] ?? 'no-image.png' ?>" alt="Hình minh họa" />
-        </div>
-        <a href="javascript:history.back()" class="btn_back">← Quay lại</a>
     </div>
     </div>
 

@@ -5,7 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Danh sách thể loại</title>
-    <!-- <link rel="stylesheet" href="../css/index.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+
 </head>
 
 <body>
@@ -18,6 +20,7 @@
     <!-- Menu -->
     <nav>
         <ul class="menu">
+            <li><a href="index.php">Trang chủ</a></li>
             <li class="menuparent">Danh mục sách
                 <ul class="submenu">
                     <li><a href="index.php?id=theloai">Thể loại</a></li>
@@ -25,16 +28,37 @@
                 </ul>
             </li>
 
-            <li class="menuparent"><a href="index.php?id=yeuthich">Mục yêu thích</a>
+            <li class="menuparent"><a href="index.php?id=chitiet_yeuthich">Mục yêu thích</a>
             </li>
         </ul>
     </nav>
 
 
     <!-- Nội dung -->
-    <div class="content">
-        <?php include("content.php"); ?>
-    </div>
+    <?php if (!isset($_GET['id'])) { ?>
+        <!-- TRANG CHỦ -->
+        <section class="home">
+            <div class="home-banner">
+                <img src="../images/banner.png" alt="Thư viện sách">
+
+                <div class="home-text">
+                    <h2>📚 Kho tri thức dành cho mọi người</h2>
+                    <p>Đọc sách hôm nay – Thành công ngày mai</p>
+                </div>
+            </div>
+        </section>
+
+    <?php } else { ?>
+        <!-- TRANG CON -->
+        <div class="content">
+            <?php include("content.php"); ?>
+        </div>
+    <?php } ?>
+
+
+    <footer>
+        <p>© 2025 Book Library | Thiết kế bởi sinh viên CNTT</p>
+    </footer>
 
 </body>
 
