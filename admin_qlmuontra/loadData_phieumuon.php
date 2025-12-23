@@ -9,6 +9,7 @@ $sql = "SELECT
         sv.ho_ten,
         pm.ma_sach,
         s.ten_sach, s.ten_tg, s.nha_xb,
+        pm.so_luong,
         pm.ngay_muon, pm.ngay_tra,
         pm.tinh_trang 
     FROM phieu_muon pm

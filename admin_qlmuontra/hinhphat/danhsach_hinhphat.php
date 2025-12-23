@@ -33,23 +33,6 @@ if (!empty($ngaymuon) && !empty($ngaytra)) {
 
 $sql .= " ORDER BY hp.ngay_phat DESC";
 
-
-/*if (!empty($masv)) {
-    $sql .= " AND hp.ma_sv LIKE '%" . mysqli_real_escape_string($conn, $masv) . "%'";
-}
-if (!empty($tensv)) {
-    $sql .= " AND sv.ho_ten LIKE '%" . mysqli_real_escape_string($conn, $tensv) . "%'";
-}
-if (!empty($ngaymuon) && !empty($ngaytra)) {
-    $sql .= " AND hp.ngay_phat BETWEEN '$ngaymuon' AND '$ngaytra'";
-} elseif (!empty($ngaymuon)) {
-    $sql .= " AND hp.ngay_phat >= '$ngaymuon'";
-} elseif (!empty($ngaytra)) {
-    $sql .= " AND hp.ngay_phat <= '$ngaytra'";
-}
-
-$sql .= " ORDER BY hp.ngay_phat DESC";*/
-
 $result = mysqli_query($conn, $sql);
 $dsPhat = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
@@ -59,76 +42,20 @@ $dsPhat = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Danh sách hình phạt</title>
-    <style>
-        body { font-family: Arial; background:#f8f9fa; padding:20px; }
-        h1 { text-align:center; color:#007bff; }
-        .filters { text-align:center; margin-bottom:20px; }
-        .filters input, .filters button {
-            padding:8px; margin:5px; border:1px solid #ced4da; border-radius:4px;
-        }
-        table { width:100%; border-collapse:collapse; background:#fff; }
-        th, td { border:1px solid #dee2e6; padding:10px; text-align:center; }
-        th { background:#007bff; color:#fff; }
-        .add-button {
-            display:inline-block; margin:10px 0; padding:8px 12px;
-            background-color:#007bff; color:white; border-radius:4px;
-            text-decoration:none;
-        }
-        .add-button:hover { background-color:#0056b3; }
-
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .btn-icon {
-            display: inline-flex;
-            align-items: center;
-            color: #007bff;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 6px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-icon i {
-            font-size: 18px;
-        }
-
-        .btn-icon span {
-            margin-left: 6px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            font-weight: bold;
-        }
-
-        .btn-icon:hover span {
-            opacity: 1;
-        }
-
-        .btn-icon:hover {
-            background-color: #e2e6ea;
-        }
-
-    </style>
-
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/danhsach_hinhphat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <?php include '../admin_menu.php'; ?>
 
 <h1>Danh sách hình phạt</h1>
-<a href="form_xulyhp.php" class="add-button">+ Thêm hình phạt</a>
+<!-- <a href="form_xulyhp.php" class="add-button">+ Thêm hình phạt</a> -->
 
 <form method="get" class="filters">
     <input type="text" name="masv" placeholder="Mã sinh viên" value="<?= htmlspecialchars($masv) ?>">
     <input type="text" name="tensv" placeholder="Tên sinh viên" value="<?= htmlspecialchars($tensv) ?>">
-    <input type="date" name="ngaymuon" value="<?= htmlspecialchars($ngaymuon) ?>">
-    <input type="date" name="ngaytra" value="<?= htmlspecialchars($ngaytra) ?>">
     <button type="submit">Tìm kiếm</button>
+    <button type="submit" name="action" value="all" class="show_button">Hiển thị tất cả</button>
 </form>
 
 <?php if (empty($dsPhat)): ?>

@@ -1,0 +1,64 @@
+body { font-family: Arial; background:#f8f9fa; padding:20px; }
+h1 { text-align:center; color:#007bff; }
+.filters { text-align:center; margin-bottom:20px; }
+.filters input, .filters button {
+    padding:8px; margin:5px; border:1px solid #ced4da; border-radius:4px;
+}
+table { width:100%; border-collapse:collapse; background:#fff; }
+th, td { border:1px solid #dee2e6; padding:10px; text-align:center; }
+th { background:#007bff; color:#fff; }
+.add-button {
+    display:inline-block; margin:10px 0; padding:8px 12px;
+    background-color:#007bff; color:white; border-radius:4px;
+    text-decoration:none;
+}
+.add-button:hover { background-color:#0056b3; }
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-icon i {
+    font-size: 18px;
+}
+
+.btn-icon span {
+    margin-left: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-icon:hover span {
+    opacity: 1;
+}
+
+.btn-icon:hover {
+    background-color: #e2e6ea;
+}
+
+.show_button {
+    display:inline-block;
+    margin:10px 0;
+    padding:8px 12px;
+    background-color: lightgrey;
+    color: black;
+    border-radius:4px;
+    text-decoration:none;
+}
+/* .show_button:hover {
+    background-color: #218838;
+} */

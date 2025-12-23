@@ -28,11 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ngaymuon = $_POST['ngaymuon'];
     $ngaytra = $_POST['ngaytra'];
     $tinhtrang = $_POST['tinhtrang'];
+    $so_luong = $_POST['so_luong'];
 
-    $sql = "INSERT INTO phieu_muon (ma_pm, ma_sv, ma_sach, ngay_muon, ngay_tra, tinh_trang)
-            VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO phieu_muon (ma_pm, ma_sv, ma_sach, ngay_muon, ngay_tra, tinh_trang, so_luong)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssssss", $ma_pm, $ma_sv, $ma_sach, $ngaymuon, $ngaytra, $tinhtrang);
+    mysqli_stmt_bind_param($stmt, "ssssssi", $ma_pm, $ma_sv, $ma_sach, $ngaymuon, $ngaytra, $tinhtrang, $so_luong);
 
     if (mysqli_stmt_execute($stmt)) {
         echo "<div style='text-align:center;
@@ -103,6 +104,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php endforeach; ?>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="so_luong">Số lượng</label>
+                <input type="number" name="so_luong" id="so_luong" min="1" value="1" required>
+            </div>
+
             <div class="form-group">
                 <label for="ngaymuon">Ngày mượn</label>
                 <input type="date" name="ngaymuon" id="ngaymuon" required>

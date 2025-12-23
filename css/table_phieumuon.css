@@ -24,14 +24,14 @@ td {
 }
 
 td, th {
-    /*max-width: 150px;
-    overflow: hidden;
+    max-width: 1000px;
+    /*overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;*/
     text-align: center;
     padding: 10px;
     border: 1px solid #ced4da;
-    text-align: left;
+    /* text-align: left; */
     font-size: 14px;
     white-space: normal; /* Cho phép xuống dòng */
     word-break: break-word; /* Tự ngắt dòng nếu dài */
@@ -51,7 +51,7 @@ td:nth-child(3) {
 }
 th:nth-child(4),
 td:nth-child(4) {
-    width: 200px; 
+    width: 80px; 
 }
 th:nth-child(5),
 td:nth-child(5) {
@@ -65,16 +65,16 @@ th:nth-child(7),
 td:nth-child(7) {
     width: 90px; 
 }
-th:nth-child(8),
-td:nth-child(8) {
-    width: 90px; 
-}
 th:nth-child(9),
 td:nth-child(9) {
-    width: 80px; 
+    width: 100px; 
 }
 th:nth-child(10),
 td:nth-child(10) {
+    width: 100px; 
+}
+th:nth-child(11),
+td:nth-child(11) {
     width: 90px; 
 }
 
