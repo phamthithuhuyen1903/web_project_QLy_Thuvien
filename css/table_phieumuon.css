@@ -1,0 +1,84 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    table-layout: auto;  /* Cho phép cột tự giãn */
+    word-break: break-word;
+}
+
+th {
+    background-color: #dee2e6;
+    color: #212529;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    font-size: 14px;
+    
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    font-size: 14px;
+}
+
+td, th {
+    max-width: 1000px;
+    /*overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;*/
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    /* text-align: left; */
+    font-size: 14px;
+    white-space: normal; /* Cho phép xuống dòng */
+    word-break: break-word; /* Tự ngắt dòng nếu dài */
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+    width: 60px;
+}
+th:nth-child(2),
+td:nth-child(2) {
+    width: 60px;
+}
+th:nth-child(3),
+td:nth-child(3) {
+    width: 80px; 
+}
+th:nth-child(4),
+td:nth-child(4) {
+    width: 80px; 
+}
+th:nth-child(5),
+td:nth-child(5) {
+    width: 180px;
+}
+th:nth-child(6),
+td:nth-child(6) {
+    width: 80px;
+}
+th:nth-child(7),
+td:nth-child(7) {
+    width: 90px; 
+}
+th:nth-child(9),
+td:nth-child(9) {
+    width: 100px; 
+}
+th:nth-child(10),
+td:nth-child(10) {
+    width: 100px; 
+}
+th:nth-child(11),
+td:nth-child(11) {
+    width: 90px; 
+}
+
+
+tr:hover {
+    background-color: #f1f3f5;
+}
