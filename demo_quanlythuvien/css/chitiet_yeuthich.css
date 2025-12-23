@@ -1,0 +1,69 @@
+/* Reset cơ bản */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Body */
+body {
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Container chính */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* Card yêu thích */
+.yeuthich {
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.yeuthich:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Hình sách */
+.yeuthich img {
+  width: 100px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Nội dung text */
+.yeuthich b {
+  color: #2c3e50;
+}
+
+.yeuthich br {
+  margin-bottom: 4px;
+}
+
+/* Link xem chi tiết */
+.yeuthich a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px 14px;
+  background-color: #558d89;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.yeuthich a:hover {
+  background-color: #27ae60;
+}

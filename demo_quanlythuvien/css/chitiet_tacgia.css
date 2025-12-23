@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  min-height: 100vh;
+  padding: 40px 20px;
+  line-height: 1.6;
+}
+
+.chitiet-tg {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 40px;
+  padding: 40px;
+}
+
+.tg-images {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.tg-images img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.tg-images img:hover {
+  transform: scale(1.02);
+}
+
+.chitiet-tg > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chitiet-tg p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.chitiet-tg strong {
+  color: #667eea;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 120px;
+  margin-right: 10px;
+}
+
+.chitiet-tg p:first-child {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #667eea;
+}
+
+.chitiet-tg ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.chitiet-tg ul li {
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.chitiet-tg ul li:hover {
+  background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
+  transform: translateX(10px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
