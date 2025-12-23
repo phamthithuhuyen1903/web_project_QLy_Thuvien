@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+header {
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 { color: #0056b3; }
+
+/* --- PHẦN MỚI: Thanh tìm kiếm dành cho Admin --- */
+.search-box {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: flex-end; /* Đẩy thanh tìm kiếm sang phải */
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-form input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 280px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search-form input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.2);
+}
+
+.btn-search {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-search:hover {
+    background-color: #004494;
+}
+
+.btn-clear {
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.btn-clear:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.table-responsive { overflow-x: auto; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+}
+
+tr:hover { background-color: #fcfcfc; }
+
+/* Trạng thái */
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.bg-success { background-color: #28a745; } /* Đã trả */
+.bg-warning { background-color: #ffc107; color: #333; } /* Chưa trả */
+
+.not-returned {
+    color: #dc3545;
+    font-style: italic;
+    font-size: 13px;
+}
+
+a { color: #0056b3; text-decoration: none; font-weight: bold; }
+a:hover { text-decoration: underline; }
