@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập hệ thống - Thư viện ABC</title>
+    <link rel="stylesheet" href="Css/LOGIN.css">
+</head>
+<body>
+    <div class="login-box">
+        <div class="login-header">
+            <h2>ĐĂNG NHẬP</h2>
+            <p>Hệ thống quản lý thư viện</p>
+        </div>
+
+        <div id="error-container"></div>
+
+        <form action="login_process.php" method="POST">
+            <div class="input-group">
+                <label for="username">Tài khoản</label>
+                <input type="text" id="username" name="username" placeholder="Nhập Mã SV hoặc Mã Admin" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+            </div>
+
+            <button type="submit" class="btn-login">Đăng nhập</button>
+        </form>
+    </div>
+
+    <script>
+        // Script xử lý hiển thị lỗi từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('error')) {
+            const errorDiv = document.getElementById('error-container');
+            // Thêm class 'alert-error' đã được định nghĩa trong file CSS
+            errorDiv.innerHTML = '<div class="alert-error">Sai tên tài khoản hoặc mật khẩu!</div>';
+            
+            // Tự động ẩn sau 5 giây
+            setTimeout(() => {
+                errorDiv.innerHTML = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
