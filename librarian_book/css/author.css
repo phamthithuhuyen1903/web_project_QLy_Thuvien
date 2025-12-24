@@ -1,79 +1,100 @@
-
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-header  {
-    text-align: center;
-    margin: 20px 0;
-    color: #333;
-    font-size: 24px;
-    font-weight: bold;
+body {
+    background: #f0f4f8;
+    padding: 30px 20px;
+    min-height: 100vh;
 }
 
+header {
+    text-align: center;
+    margin: 0 0 40px 0;
+    color: #2c5aa0;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
 
+/* ===== THANH CÔNG CỤ ===== */
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-  gap: 20px;                
-  margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
 .search-bar {
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 300px;
-  margin-bottom: 0;      
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 350px;
+    margin-bottom: 0;
 }
 
 .search-bar input[type="text"] {
-  width: 100%;
-  height: 40px;                       
-  padding: 0 14px 0 38px;             
-  border: 1px solid #dcdde1;
-  border-radius: 8px;
-  font-size: 15px;
-  line-height: 40px;                  
-  transition: 0.2s;
-  box-sizing: border-box;
+    width: 100%;
+    height: 45px;
+    padding: 0 16px 0 45px;
+    border: 2px solid #d4e2f1;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: #fff;
+    color: #333;
+}
+
+.search-bar input[type="text"]:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.1);
+    transform: translateY(-2px);
+}
+
+.search-bar input[type="text"]:hover {
+    border-color: #5ba3f5;
 }
 
 .search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #b2bec3;
-  font-size: 16px;
-  pointer-events: none;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4a90e2;
+    font-size: 18px;
+    pointer-events: none;
 }
 
 .add {
-  background: #0984e3;
-  color: white;
-  height: 40px;                       /* trùng với input */
-  padding: 0 16px;                     /* chỉ padding ngang */
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  line-height: 40px;                   /* text căn giữa theo chiều dọc */
-  cursor: pointer;
-  transition: 0.2s;
-  box-sizing: border-box;
-  text-decoration: none;
-  display: inline-block;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    color: white;
+    height: 45px;
+    padding: 0 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .add:hover {
-  background: #04518c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+}
+
+.add:active {
+    transform: translateY(0);
 }
 
 /* ===== BẢNG ===== */
@@ -81,13 +102,11 @@ table {
     width: 1000px;
     text-align: center;
     border-collapse: collapse;
-    margin: 15px auto;   /* căn giữa ngang */
+    margin: 15px auto;
     font-size: 14px;
     background-color: #fff;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
-
 
 thead {
     background-color: #3538ed;
@@ -101,7 +120,6 @@ thead th {
     white-space: nowrap;
 }
 
-/* Ô dữ liệu */
 tbody td {
     padding: 8px;
     border: 1px solid #ddd;
@@ -114,7 +132,6 @@ tbody tr:hover {
     transition: background-color 0.3s ease;
 }
 
-/* Liên kết trong bảng */
 table a {
     text-decoration: none;
     color: inherit;
@@ -129,42 +146,42 @@ table a:hover {
 /* Đặt độ rộng cụ thể cho từng cột */
 table th:nth-child(1),
 table td:nth-child(1) {
-    width: 80px; /* Mã tác giả */
+    width: 80px;
 }
 
 table th:nth-child(2),
 table td:nth-child(2) {
-    width: 180px; /* Tên tác giả */
+    width: 180px;
 }
 
 table th:nth-child(3),
 table td:nth-child(3) {
-    width: 100px; /* Hình ảnh */
+    width: 100px;
 }
 
 table th:nth-child(4),
 table td:nth-child(4) {
-    width: 80px; /* Giới tính */
+    width: 80px;
 }
 
 table th:nth-child(5),
 table td:nth-child(5) {
-    width: 120px; /* Ngày sinh */
+    width: 120px;
 }
 
 table th:nth-child(6),
 table td:nth-child(6) {
-    width: 300px; /* Quê quán */
+    width: 300px;
 }
-
 
 table th:nth-child(8),
 table td:nth-child(8) {
-    width: 100px; /* Thao tác */
+    width: 100px;
 }
 
 /* ICON thao tác */
- .btn-edit, .btn-delete{
+.btn-edit,
+.btn-delete {
     background: none;
     border: none;
     cursor: pointer;
@@ -176,12 +193,15 @@ table td:nth-child(8) {
 .btn-edit i {
     color: #0411a1;
 }
+
 .btn-edit:hover i {
     transform: scale(1.2);
 }
+
 .btn-delete i {
     color: #d40c0c;
 }
+
 .btn-delete:hover i {
     transform: scale(1.2);
 }
@@ -242,6 +262,7 @@ table td:nth-child(8) {
 #noDelete:hover {
     background: #0773c7;
 }
+
 /* Hộp thoại thông báo */
 .popup-message {
     position: fixed;
@@ -249,7 +270,7 @@ table td:nth-child(8) {
     left: 50%;
     transform: translate(-50%, -50%);
     background: #fff;
-    border: 2px solid #333; /* viền luôn màu đen */
+    border: 2px solid #333;
     padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
@@ -258,7 +279,6 @@ table td:nth-child(8) {
     display: none;
 }
 
-/* Chỉ đổi màu chữ, không đổi viền */
 .popup-message.success {
     color: green;
 }
@@ -267,14 +287,36 @@ table td:nth-child(8) {
     color: red;
 }
 
-/* Nút màu xanh */
 .popup-message button {
     margin-top: 10px;
     padding: 6px 10px;
     border: none;
-    background: #05038a; /* xanh đậm */
+    background: #05038a;
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
 }
 
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    table {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .button {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-bar {
+        width: 100%;
+        max-width: 350px;
+    }
+}
