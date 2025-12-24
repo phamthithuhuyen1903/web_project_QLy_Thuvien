@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -90,7 +90,6 @@ nav {
   color: #fff;
 }
 
-/* ================= HOME - BANNER ================= */
 /* ================= HOME - BANNER ================= */
 .home {
   padding: 40px 0 60px;
