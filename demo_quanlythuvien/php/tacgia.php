@@ -1,5 +1,5 @@
 <?php
-require_once './connect/connect.php';
+require_once __DIR__ . '/../../connect/connect.php';
 
 if (isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
@@ -13,6 +13,7 @@ if ($keyword != "") {
 }
 $result = mysqli_query($conn, $sql);
 ?>
+
 <link rel="stylesheet" href="../css/tacgia.css">
 <form method="GET" action="" style="margin-bottom:15px;">
     <input type="hidden" name="id" value="tacgia">

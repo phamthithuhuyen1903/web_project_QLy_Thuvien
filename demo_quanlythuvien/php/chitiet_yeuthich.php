@@ -1,5 +1,5 @@
 <?php
-require_once './connect/connect.php';
+require_once __DIR__ . '/../../connect/connect.php';
 if (!isset($_GET['id'])) {
   echo "Không lấy đc query";
   die();

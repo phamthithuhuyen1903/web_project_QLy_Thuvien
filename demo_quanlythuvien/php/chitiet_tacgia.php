@@ -1,5 +1,5 @@
 <?php
-require_once './connect/connect.php';
+require_once __DIR__ . '/../../connect/connect.php';
 
 if (!isset($_GET['ma_tg'])) {
     echo "Không có tác giả!";
@@ -45,7 +45,7 @@ $result_sach = mysqli_query($conn, $sql_sach);
             $hinh = 'no-image.png';
             if (isset($tacgia['hinh']) && $tacgia['hinh'] != '') {
                 $hinh = $tacgia['hinh'];
-            } 
+            }
             ?>
             <img src="../images/<?php echo $hinh; ?>" alt="Hình minh họa" />
 
@@ -53,12 +53,19 @@ $result_sach = mysqli_query($conn, $sql_sach);
         <div>
             <p><strong>Họ và tên:</strong><?php echo $tacgia['ten_tg'] ?></p>
             <p><strong>Ngày sinh:</strong><?php echo $tacgia['ngay_sinh'] ?></p>
+            <p><strong>Giới tính:</strong>
+                <?php echo ($tacgia['gioi_tinh'] == 0) ? 'Nam' : 'Nữ'; ?>
+            </p>
             <p><strong>Quê quán:</strong><?php echo $tacgia['que'] ?></p>
             <p><strong>Tiểu sử:</strong><?php echo nl2br($tacgia['tieu_su']) ?></p>
             <p><strong>Tác phẩm:</strong></p>
             <ul>
                 <?php while ($s = mysqli_fetch_assoc($result_sach)) { ?>
-                    <li><?php echo $s['ten_sach'] ?></li>
+                    <li>
+                        <a href="chitiet_sach.php?ms=<?php echo $s['ma_sach']; ?>">
+                            <?php echo $s['ten_sach']; ?>
+                        </a>
+                    </li>
                 <?php } ?>
             </ul>
         </div>

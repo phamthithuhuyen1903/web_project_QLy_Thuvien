@@ -1,5 +1,5 @@
 <?php
-require_once './connect/connect.php';
+require_once __DIR__ . '/../../connect/connect.php';
 
 if (!isset($_GET['ms'])) {
     echo "Không có sách được chọn!";
@@ -7,7 +7,7 @@ if (!isset($_GET['ms'])) {
 }
 
 $ma_sach = $_GET['ms'];
-
+$ma_loai=$_GET['ml'];
 // Lấy thông tin sách
 $sql = "SELECT * FROM sach WHERE ma_sach = '$ma_sach'";
 $result = mysqli_query($conn, $sql);
@@ -24,26 +24,21 @@ if (isset($_POST['muon'])) {
     $ma_pm     = 'PM' . time();
     $ma_sv     = $_POST['ma_sv'];
     $ngay_muon = $_POST['ngay_muon'];
-    $ngay_tra  = $_POST['ngay_tra'];  // do sinh viên nhập
+    $ngay_tra  = $_POST['ngay_tra'];
     $so_luong  = (int)$_POST['so_luong'];
 
     $sql_pm = "INSERT INTO phieu_muon
                (ma_pm, ma_sv, ma_sach, tinh_trang, ngay_muon, ngay_tra, so_luong)
                VALUES
                ('$ma_pm','$ma_sv','$ma_sach','Dang muon','$ngay_muon','$ngay_tra','$so_luong')";
-
     if (mysqli_query($conn, $sql_pm)) {
 
-        // Trừ số lượng sách
-        mysqli_query(
-            $conn,
-            "UPDATE sach SET so_luong = so_luong - $so_luong WHERE ma_sach='$ma_sach'"
-        );
+        mysqli_query($conn, "UPDATE sach SET so_luong = so_luong - $so_luong WHERE ma_sach='$ma_sach'");
 
-        echo "<script>
-                alert('Mượn sách thành công!');
-                window.location='chitiet_sach.php?ms=$ma_sach';
-              </script>";
+        echo "<script>alert('Mượn sách thành công!'); window.location='index.php?id=theloai&ml=$ma_loai';</script>";
+    } else {
+        // Hiển thị lỗi SQL
+        echo "<script>alert('Lỗi SQL: " . mysqli_error($conn) . "');</script>";
     }
 }
 ?>

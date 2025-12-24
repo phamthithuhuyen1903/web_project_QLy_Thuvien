@@ -1,4 +1,13 @@
-<?php include __DIR__.'../../connect/connect.php'; ?>
+<?php
+include __DIR__ . '/../../connect/connect.php';
+// if (file_exists($path)) {
+//     include $path;
+// } else {
+//     echo "❌ Không tìm thấy connect.php";
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -26,12 +35,10 @@
                     <li><a href="index.php?id=tacgia">Tác giả</a></li>
                 </ul>
             </li>
-
             <li class="menuparent"><a href="index.php?id=chitiet_yeuthich">Mục yêu thích</a>
             </li>
         </ul>
     </nav>
-
 
     <!-- Nội dung -->
     <?php if (!isset($_GET['id'])) { ?>
@@ -58,7 +65,6 @@
     <footer>
         <p>© 2025 Book Library | Thiết kế bởi sinh viên CNTT</p>
     </footer>
-
 </body>
 
 </html>

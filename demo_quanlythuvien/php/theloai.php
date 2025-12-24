@@ -1,5 +1,6 @@
 <?php
-require_once './connect/connect.php';
+require_once __DIR__ . '/../../connect/connect.php';
+
 if (isset($_GET['ml'])) {
     $ma_loai = $_GET['ml'];
 } else {
@@ -20,6 +21,7 @@ if (isset($_GET['ms'])) {
 
 ?>
 <link rel="stylesheet" href="../css/theloai.css">
+
 <?php if ($ma_loai == null) { ?>
     <h2>DANH SÁCH THỂ LOẠI</h2>
     <ul class="theloai_list">
@@ -34,7 +36,6 @@ if (isset($_GET['ms'])) {
 
     <?php } else {
 
-    // Lấy thông tin thể loại 
     $sql = "SELECT * FROM loai_sach WHERE ma_loai_sach='$ma_loai'";
     $result = mysqli_query($conn, $sql);
     $loai = mysqli_fetch_assoc($result);
@@ -47,14 +48,15 @@ if (isset($_GET['ms'])) {
             <input type="text" name="keyword" placeholder="Tìm theo tên sách..." value="<?php echo htmlspecialchars($keyword) ?>">
             <button type="submit">🔍 Tìm</button>
         </form>
+
         <?php
         $sql = "SELECT s.*, tg.ten_tg FROM sach s JOIN tac_gia tg ON s.ma_tg = tg.ma_tg WHERE s.ma_loai_sach = '$ma_loai'";
         if ($keyword != '') {
             $sql .= " AND s.ten_sach LIKE '%$keyword%'";
         }
-        $books = mysqli_query($conn, $sql);
+        $sach = mysqli_query($conn, $sql);
 
-        if (mysqli_num_rows($books) > 0) {
+        if (mysqli_num_rows($sach) > 0) {
         ?>
             <table border="1" cellpadding="8" cellspacing="0" width="100%">
                 <tr>
@@ -69,27 +71,62 @@ if (isset($_GET['ms'])) {
                 </tr>
                 <?php
                 $stt = 1;
-                while ($sach = mysqli_fetch_assoc($books)) {
+                // ?id=theloai&ml=LS02
+                while ($r_sach = mysqli_fetch_assoc($sach)) {
                 ?>
-                    <tr onclick="location='chitiet_sach.php?ml=<?php echo $ma_loai; ?>&ms=<?php echo $sach['ma_sach'] ?>'" style="cursor:pointer;">
-                        <td><?= $stt ?></td>
+                    <tr class="row-click">
+                        <td>
+                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                                <?=$stt  ?>
+                            </a>
+                        </td>
+
                         <td>
                             <?php
-                            $hinh = 'no-image.png';
-                            if (isset($sach['hinh']) && $sach['hinh'] != '') {
-                                $hinh = $sach['hinh'];
-                            }
-
+                            $hinh = !empty($r_sach['hinh']) ? $r_sach['hinh'] : 'no-image.png';
                             ?>
-                            <img src="../images/<?php echo $hinh; ?>" alt="Hình minh họa" />
+                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                                <img src="../images/<?= $hinh ?>" alt="Hình minh họa" width="60">
+                            </a>
                         </td>
-                        <td><?php echo $sach['ten_sach'] ?></td>
-                        <td><?php echo $sach['ten_tg'] ?></td>
-                        <td><?php echo $sach['nha_xb'] ?></td>
-                        <td><?php echo $sach['nam_xb'] ?></td>
-                        <td><?php echo $sach['so_luong'] ?></td>
-                        <td><?php echo $sach['tinh_trang'] == 1 ? 'Còn' : 'Hết' ?></td>
+
+                        <td>
+                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                                <?= $r_sach['ten_sach'] ?>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                                <?= $r_sach['ten_tg'] ?>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                                <?= $r_sach['nha_xb'] ?>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                                <?= $r_sach['nam_xb'] ?>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                                <?= $r_sach['so_luong'] ?>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                                <?= $r_sach['so_luong'] > 0 ? 'Còn' : 'Hết' ?>
+                            </a>
+                        </td>
                     </tr>
+
                 <?php
                     $stt++;
                 }

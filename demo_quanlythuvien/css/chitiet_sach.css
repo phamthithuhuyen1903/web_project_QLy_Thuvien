@@ -9,15 +9,14 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-  min-height: 100vh;
   padding: 40px 20px;
-  display: flex;
+  position: relative;
   align-items: center;
-  justify-content: center;
 }
 
 /* Khung chi tiết */
 .chitiet-tl {
+  margin: 0 auto;
   max-width: 650px;
   width: 100%;
   background: #ffffff;
@@ -27,18 +26,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Tiêu đề sách */

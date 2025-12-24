@@ -4,21 +4,20 @@ if (isset($_GET['id'])) {
 
     switch ($id) {
         case 'theloai':
-            include 'theloai.php';
+            include __DIR__ . '/theloai.php';
             break;
 
         case 'tacgia':
-            include 'tacgia.php';
+            include __DIR__ . '/tacgia.php';
             break;
 
         case 'yeuthich':
-            include 'yeuthich.php';
+            include __DIR__ . '/yeuthich.php';
             break;
 
         case 'chitiet_yeuthich':
-            include 'chitiet_yeuthich.php';
+            include __DIR__ . '/chitiet_yeuthich.php';
             break;
-
         default:
             echo "<p>Không tìm thấy nội dung</p>";
     }
