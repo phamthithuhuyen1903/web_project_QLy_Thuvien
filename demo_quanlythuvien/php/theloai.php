@@ -1,5 +1,5 @@
 <?php
-include("connect.php");
+require_once './connect/connect.php';
 if (isset($_GET['ml'])) {
     $ma_loai = $_GET['ml'];
 } else {

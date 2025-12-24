@@ -1,5 +1,5 @@
 <?php
-include("connect.php");
+require_once './connect/connect.php';
 
 if (!isset($_GET['ma_tg'])) {
     echo "Không có tác giả!";

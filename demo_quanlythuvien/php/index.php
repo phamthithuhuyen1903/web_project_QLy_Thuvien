@@ -1,4 +1,4 @@
-<?php include("connect.php"); ?>
+<?php include __DIR__.'../../connect/connect.php'; ?>
 <!DOCTYPE html>
 <html lang="vi">
 

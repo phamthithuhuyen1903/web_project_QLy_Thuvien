@@ -1,5 +1,5 @@
 <?php
-include("connect.php");
+require_once './connect/connect.php';
 
 if (isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];

@@ -1,6 +1,5 @@
 <?php
-include("connect.php");
-
+require_once './connect/connect.php';
 if (!isset($_GET['id'])) {
   echo "Không lấy đc query";
   die();
