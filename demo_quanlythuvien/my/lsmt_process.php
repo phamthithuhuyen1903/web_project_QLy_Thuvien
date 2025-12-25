@@ -39,10 +39,11 @@ if ($userRole == 'admin') {
     }
 } else {
     // === TRƯỜNG HỢP 2: SINH VIÊN (Chỉ xem của bản thân) ===
-    $sql = "SELECT p.*, s.ten_sach 
+    $sql = "SELECT p.*, s.ten_sach, sv.ma_sv 
             FROM phieu_muon p 
+            INNER JOIN sinh_vien sv ON p.ma_sv = sv.ma_sv 
             LEFT JOIN sach s ON p.ma_sach = s.ma_sach 
-            WHERE p.ma_sv = ? 
+            WHERE sv.id = ? 
             ORDER BY p.ngay_muon DESC";
 
     $stmt = mysqli_prepare($conn, $sql);
@@ -67,7 +68,7 @@ if ($stmt) {
 }
 
 // Đóng kết nối
-mysqli_close($conn);
+// mysqli_close($conn);
 
 // Gọi file giao diện để hiển thị
 include 'lsmt_view.php';

@@ -31,7 +31,11 @@
                 </form>
             </div>
         <?php endif; ?>
-
+        <?php
+        if (isset($_GET['ms'])) {
+            include 'muon_sach.php';
+        }
+        ?>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -52,6 +56,8 @@
                 <tbody>
                     <?php if (isset($data) && count($data) > 0): ?>
                         <?php foreach ($data as $row): ?>
+                            <?php
+                            ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($row['ma_pm']); ?></td>
                                 <td><?php echo htmlspecialchars($row['ma_sv']); ?></td>

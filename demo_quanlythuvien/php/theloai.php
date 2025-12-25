@@ -80,8 +80,8 @@ if (isset($_GET['ms'])) {
                 ?>
                     <tr class="row-click" onclick="window.location='/quanlythuvien/demo_quanlythuvien/php/chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>'">
                         <td>
-                           
-                                <?= $stt  ?>
+
+                            <?= $stt  ?>
                             </a>
                         </td>
 
@@ -92,32 +92,32 @@ if (isset($_GET['ms'])) {
                                 $hinh = $r_sach['hinh'];
                             }
                             ?>
-                           
-                                <img src="../images/<?= $hinh ?>" alt="Hình minh họa" width="60">
+
+                            <img src="../images/<?= $hinh ?>" alt="Hình minh họa" width="60">
                             </a>
                         </td>
 
                         <td>
-                           
-                                <?= $r_sach['ten_sach'] ?>
+
+                            <?= $r_sach['ten_sach'] ?>
                             </a>
                         </td>
 
                         <td>
-                           
-                                <?= $r_sach['ten_tg'] ?>
+
+                            <?= $r_sach['ten_tg'] ?>
                             </a>
                         </td>
 
                         <td>
-                           
-                                <?= $r_sach['nha_xb'] ?>
+
+                            <?= $r_sach['nha_xb'] ?>
                             </a>
                         </td>
 
                         <td>
-                           
-                                <?= $r_sach['nam_xb'] ?>
+
+                            <?= $r_sach['nam_xb'] ?>
                             </a>
                         </td>
 
@@ -128,8 +128,8 @@ if (isset($_GET['ms'])) {
                         </td>
 
                         <td>
-                           
-                                <?= $r_sach['so_luong'] > 0 ? 'Còn' : 'Hết' ?>
+
+                            <?= $r_sach['so_luong'] > 0 ? 'Còn' : 'Hết' ?>
                             </a>
                         </td>
                     </tr>
