@@ -75,7 +75,6 @@ if ($sach['so_luong'] > 0) {
             <?php }
             ?>
 
-            <!-- Nút yêu thích -->
             <?php
             $yeuthich = false;
             $sql = "SELECT * from yeu_thich where ma_sach ='$ma_sach'";
@@ -88,8 +87,6 @@ if ($sach['so_luong'] > 0) {
                 class="btn-yeuthich <?php echo $yeuthich ? 'da_yeuthich' : '' ?>">
                 <?php echo $yeuthich ? '❤️ Đã yêu thích' : '🤍 Yêu thích' ?>
             </a>
-
-
 
         </form>
 

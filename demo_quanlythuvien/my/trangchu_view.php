@@ -69,7 +69,7 @@ if (!isset($userName) || !isset($userRole)) {
                     </div>
                     <a href="?controller=yeuthich">Mục yêu thích</a>
                     <a href="lsmt_process.php">Lịch sử mượn trả sách</a>
-                    <a href="javascript:void(0)">Quản lý tài khoản</a>
+                    <a href="?controller=taikhoansv">Quản lý tài khoản</a>
                 <?php endif; ?>
             </div>
         </nav>
@@ -82,13 +82,18 @@ if (!isset($userName) || !isset($userRole)) {
 
             if ($controller == "theloai") {
                 include_once __DIR__ . '/../php/theloai.php';
-                
             }
             if ($controller == "tacgia") {
                 include_once __DIR__ . '/../php/tacgia.php';
             }
             if ($controller == "yeuthich") {
                 include_once __DIR__ . '/../php/chitiet_yeuthich.php';
+            }
+            if ($controller == "taikhoansv") {
+                include_once __DIR__ . '/../webthuvien/sinhvien/php/taikhoansv.php';
+            }
+            if ($controller == "suasv") {
+                include_once __DIR__ . '/../webthuvien/sinhvien/php/suasv.php';
             }
         } else {
         ?>
