@@ -30,6 +30,8 @@ if (mysqli_num_rows($check) > 0) {
     mysqli_query($conn, $sql_2);
 }
 
-header("Location: chitiet_sach.php?ml=$ma_loai&ms=$ma_sach");
+header("Location: /quanlythuvien/demo_quanlythuvien/php/chitiet_sach.php?ml=$ma_loai&ms=$ma_sach");
 
 exit;
+?>
+

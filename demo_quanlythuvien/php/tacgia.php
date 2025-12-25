@@ -37,7 +37,7 @@ $result = mysqli_query($conn, $sql);
             <br />
             <b>Tác giả: </b><?php echo $tacgia['ten_tg'] ?> <br />
             <b>Quê: </b><?php echo $tacgia['que'] ?> <br>
-            <a href="chitiet_tacgia.php?ma_tg=<?php echo $tacgia['ma_tg'] ?>">Xem chi tiết</a>
+            <a href="/quanlythuvien/demo_quanlythuvien/php/chitiet_tacgia.php?ma_tg=<?php echo $tacgia['ma_tg'] ?>">Xem chi tiết</a>
         </div>
     <?php } ?>
 </div>

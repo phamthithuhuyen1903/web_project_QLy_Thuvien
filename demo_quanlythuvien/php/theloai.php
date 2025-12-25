@@ -29,7 +29,11 @@ if (isset($_GET['ms'])) {
         $sql = "SELECT * FROM loai_sach";
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<li><a href="index.php?id=theloai&ml=' . $row['ma_loai_sach'] . '">' . $row['ten_loai_sach'] . '</a></li>';
+            echo '<li>
+    <a href="?controller=theloai&ml='
+                . $row['ma_loai_sach'] . '">'
+                . $row['ten_loai_sach'] .
+                '</a></li>';
         }
         ?>
     </ul>
@@ -71,45 +75,48 @@ if (isset($_GET['ms'])) {
                 </tr>
                 <?php
                 $stt = 1;
-                // ?id=theloai&ml=LS02
+
                 while ($r_sach = mysqli_fetch_assoc($sach)) {
                 ?>
-                    <tr class="row-click">
+                    <tr class="row-click" onclick="window.location='/quanlythuvien/demo_quanlythuvien/php/chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>'">
                         <td>
-                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
-                                <?=$stt  ?>
+                           
+                                <?= $stt  ?>
                             </a>
                         </td>
 
                         <td>
                             <?php
-                            $hinh = !empty($r_sach['hinh']) ? $r_sach['hinh'] : 'no-image.png';
+                            $hinh = 'no-image.png';
+                            if (isset($r_sach['hinh']) && $r_sach['hinh'] != '') {
+                                $hinh = $r_sach['hinh'];
+                            }
                             ?>
-                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                           
                                 <img src="../images/<?= $hinh ?>" alt="Hình minh họa" width="60">
                             </a>
                         </td>
 
                         <td>
-                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                           
                                 <?= $r_sach['ten_sach'] ?>
                             </a>
                         </td>
 
                         <td>
-                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                           
                                 <?= $r_sach['ten_tg'] ?>
                             </a>
                         </td>
 
                         <td>
-                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                           
                                 <?= $r_sach['nha_xb'] ?>
                             </a>
                         </td>
 
                         <td>
-                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                           
                                 <?= $r_sach['nam_xb'] ?>
                             </a>
                         </td>
@@ -121,7 +128,7 @@ if (isset($_GET['ms'])) {
                         </td>
 
                         <td>
-                            <a href="chitiet_sach.php?ml=<?= $ma_loai ?>&ms=<?= $r_sach['ma_sach'] ?>">
+                           
                                 <?= $r_sach['so_luong'] > 0 ? 'Còn' : 'Hết' ?>
                             </a>
                         </td>

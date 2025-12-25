@@ -1,9 +1,6 @@
 <?php
 require_once __DIR__ . '/../../connect/connect.php';
-if (!isset($_GET['id'])) {
-  echo "Không lấy đc query";
-  die();
-}
+
 
 $sql = "
 SELECT 
@@ -55,7 +52,7 @@ $result = mysqli_query($conn, $sql);
         <b>Thể loại: </b><?php echo $yeuthich['ten_loai_sach'] ?> <br />
         <b>Tác giả: </b><?php echo $yeuthich['ten_tg'] ?> <br />
         <b>Năm xuất bản: </b><?php echo $yeuthich['nam_xb'] ?><br />
-        <a href="chitiet_sach.php?ml=<?php echo $yeuthich['ma_loai_sach']; ?>&ms=<?php echo $yeuthich['ma_sach'] ?>">Xem chi tiết</a>
+        <a href="/quanlythuvien/demo_quanlythuvien/php/chitiet_sach.php?ml=<?php echo $yeuthich['ma_loai_sach']; ?>&ms=<?php echo $yeuthich['ma_sach'] ?>">Xem chi tiết</a>
       </div>
     <?php } ?>
   </div>
