@@ -1,0 +1,130 @@
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    z-index: 2000;
+    border: none;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4),
+                0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon mũi tên */
+.back-button::before {
+    content: "←";
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-3px) translateX(-3px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5),
+                0 5px 15px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.back-button:hover::before {
+    transform: translateX(-5px);
+    animation: arrowBounce 0.6s ease infinite;
+}
+
+.back-button:active {
+    transform: translateY(-1px) translateX(-1px) scale(0.95);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4),
+                0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation cho mũi tên */
+@keyframes arrowBounce {
+    0%, 100% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+}
+
+/* Hiệu ứng ripple khi click */
+.back-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.back-button:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .back-button {
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+.thanhdieuhuong {
+    margin-top: 20px;  
+    margin-left: 0px;
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.thanhdieuhuong_btn {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    
+}
+
+.thanhdieuhuong_btn i {
+    margin-right: 6px;
+}
+
+.thanhdieuhuong_btn:hover {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.thanhdieuhuong_btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.thanhdieuhuong_separator {
+    margin: 0 8px;
+    font-weight: bold;
+    color: #666;
+}

@@ -1,0 +1,154 @@
+/* --- PHẦN CHUNG --- */
+body {
+    background-color: #f4f7f6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    margin: 30px 0;
+}
+
+header h1 {
+    color: #333;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- PHẦN FORM THÔNG TIN (MỚI THÊM) --- */
+.form-wrapper {
+    max-width: 650px;
+    margin: 20px auto 50px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+}
+
+.form-group input {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fdfdfd;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi ô input được click hoặc readonly */
+.form-group input[readonly] {
+    background-color: #f5f5f5;
+    color: #777;
+    cursor: not-allowed;
+    border: 1px solid #eee;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(74, 175, 80, 0.2);
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 25px 0;
+}
+
+/* Nút Đổi mật khẩu */
+.btn-change-pass {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.btn-change-pass:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b41);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-change-pass:active {
+    transform: translateY(0);
+}
+
+/* --- PHẦN TABLE (Dành cho trang danh sách admin nếu dùng chung file) --- */
+.button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 20px;
+}
+
+#search {
+    flex: 1;
+    max-width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+table {
+    width: 95%;
+    margin: 15px auto;
+    border-collapse: collapse;
+    background: white;
+    font-size: 14px;
+    table-layout: auto; 
+}
+
+thead {
+    background-color: #4CAF50;
+    color: white;
+}
+
+thead th {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    white-space: nowrap; 
+}
+
+tbody td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) { background-color: #f9f9f9; }
+tbody tr:hover { background-color: #e6f7ff; cursor: pointer; }

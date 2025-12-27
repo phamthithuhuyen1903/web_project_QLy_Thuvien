@@ -1,0 +1,108 @@
+/* Header */
+header {
+    text-align: center;
+    margin: 20px 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #333;
+}
+
+/* Khu vực nút và thanh tìm kiếm */
+.button {
+    width: 90%;              /* giống bảng */
+    margin: 15px auto;       /* căn giữa khối nút */
+    display: flex;
+    justify-content: flex-start; /* căn trái bên trong khối */
+    align-items: center;
+    gap: 20px;               /* khoảng cách giữa nút Thêm và tìm kiếm */
+}
+
+
+/* Nút thêm */
+.add {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.add:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Thanh tìm kiếm */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#search_sv {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+#search_sv:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Nút tìm kiếm */
+.btn-search-submit {
+    padding: 8px 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-search-submit:hover {
+    background-color: #1976D2;
+    transform: scale(1.05);
+}
+
+/* Bảng */
+table {
+    width: 90%;
+    text-align: center;
+    margin: 20px auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+thead {
+    background-color: #4CAF50;
+    color: white;
+}
+
+thead th {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-weight: 600;
+}
+
+tbody td {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: #333;
+}
+
+tbody tr:nth-child(even) { background-color: #f9f9f9; }
+tbody tr:nth-child(odd) { background-color: #ffffff; }
+tbody tr:hover { 
+    background-color: #e6f7ff; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}

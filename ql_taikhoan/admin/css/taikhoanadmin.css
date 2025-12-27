@@ -1,0 +1,84 @@
+body {
+    background-color: #f4f7f6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Khung bao quanh Form */
+.form-wrapper {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Căn chỉnh nhãn và ô input thẳng hàng */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    width: 140px; /* Độ rộng cố định cho nhãn */
+    font-weight: bold;
+    color: #444;
+}
+
+.form-group input {
+    flex: 1; /* Ô input tự động giãn hết phần còn lại */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 15px;
+}
+
+.form-group input[readonly] {
+    color: #666;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+/* Nút Chỉnh sửa */
+.btn-action {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.btn-action a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.btn-action a:hover {
+    background-color: #45a049;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Giữ nguyên phần CSS Table của bạn (nếu dùng trang khác) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+thead { background-color: #4CAF50; color: white; }
+thead th { padding: 12px; border: 1px solid #ddd; }
+tbody td { padding: 8px; border: 1px solid #ddd; text-align: center; }

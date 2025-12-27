@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử mượn trả</title>
+    <link rel="stylesheet" href="/Project_QuanLyThuVien/phan_quyen/css/lsmt.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Project_QuanLyThuVien/header.css">
+    
+</head>
+<body>
+    <div class="thanhdieuhuong">
+        <a href="/Project_QuanLyThuVien/phan_quyen/php/TRANGCHU.PHP" class="thanhdieuhuong_btn">
+            <i class="fas fa-home"></i> Trang Chủ
+        </a>
+        <span class="thanhdieuhuong_separator">›</span>
+        <a href="/Project_QuanLyThuVien/admin_qlmt/admin_qlmuontra/admin_giaodien.php" class="thanhdieuhuong_btn active">
+            <i class="fas fa-book"></i> Lịch sử mượn trả sách
+        </a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h2>⏳ LỊCH SỬ MƯỢN TRẢ SÁCH</h2>
+            <p>
+                Chào, <strong><?php echo htmlspecialchars($_SESSION['name']); ?></strong> 
+                (<?php echo ($_SESSION['role'] == 'admin') ? 'Quản trị viên' : 'Sinh viên'; ?>) 
+                <!-- <a href="TRANGCHU.PHP">Quay lại trang chủ</a> -->
+            </p>
+        </header>
+
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+        <div class="search-bar">
+            <form action="" method="GET"> 
+                <input type="text" name="search" placeholder="Nhập Mã SV hoặc Tên..." value="<?php echo htmlspecialchars($search); ?>">
+                <button type="submit">Tìm kiếm</button>
+                
+                <?php if (!empty($search)): ?>
+                    <a href="lsmt_process.php" class="btn-clear">Xóa lọc</a>
+                <?php endif; ?>
+            </form>
+        </div>
+        <?php endif; ?>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã PM</th>
+                        <th>Mã SV</th>
+                        
+                        <?php if ($_SESSION['role'] == 'admin'): ?>
+                            <th>Họ Tên SV</th>
+                        <?php endif; ?>
+
+                        <th>Tên Sách</th>
+                        <th>Ngày Mượn</th>
+                        <th>Ngày Trả</th>
+                        <th>Trạng Thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (isset($data) && count($data) > 0): ?>
+                        <?php foreach ($data as $row): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['ma_pm']); ?></td>
+                            <td><?php echo htmlspecialchars($row['ma_sv']); ?></td>
+
+                            <?php if ($_SESSION['role'] == 'admin'): ?>
+                                <td><?php echo htmlspecialchars($row['ho_ten'] ?? 'N/A'); ?></td>
+                            <?php endif; ?>
+
+                            <td><?php echo htmlspecialchars($row['ten_sach'] ?? $row['ma_sach']); ?></td>
+                            <td><?php echo date('d/m/Y', strtotime($row['ngay_muon'])); ?></td>
+
+                            <td>
+                                <?php 
+                                    if ($row['ngay_tra'] == '0000-00-00' || $row['ngay_tra'] == null) {
+                                        echo '<span class="not-returned">-- Chưa trả --</span>';
+                                    } else {
+                                        echo date('d/m/Y', strtotime($row['ngay_tra']));
+                                    }
+                                ?>
+                            </td>
+
+                            <td>
+                                <?php 
+                                    $statusClass = '';
+                                    $statusText = $row['tinh_trang'];
+                                    
+                                    if (stripos($statusText, 'Đã trả') !== false) {
+                                        $statusClass = 'bg-success';
+                                    } elseif (stripos($statusText, 'Đang mượn') !== false) {
+                                        $statusClass = 'bg-warning';
+                                    } else {
+                                        $statusClass = 'bg-danger';
+                                    }
+                                ?>
+                                <span class="badge <?php echo $statusClass; ?>">
+                                    <?php echo htmlspecialchars($statusText); ?>
+                                </span>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="8" style="text-align: center; padding: 20px; color: #666;">
+                                Không tìm thấy dữ liệu phiếu mượn nào phù hợp.
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
